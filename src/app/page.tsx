@@ -11,7 +11,7 @@ const Home = () => {
 
   // Calculate target date (10 days from now)
   const targetDate = new Date();
-  targetDate.setDate(targetDate.getDate() + 10);
+  targetDate.setDate(targetDate.getDate() + 21);
 
   useEffect(() => {
     // Show signature after animation sequence (3 seconds)
