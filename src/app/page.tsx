@@ -142,7 +142,7 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={showSignature ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
           className="absolute bottom-4 sm:bottom-6 md:bottom-8 text-center font-serif text-xs sm:text-sm tracking-wider sm:tracking-widest"
           style={{ color: `${colors.accent}E6` }}
         >
