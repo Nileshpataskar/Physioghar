@@ -9,7 +9,8 @@ interface AnimatedLogoProps {
 
 const AnimatedLogo = ({
   size = 300,
-//   accentColor = "#D4AF37", // Gold color
+  accentColor = "#D4AF37", // Default gold color
+  color = "#111",
 }: AnimatedLogoProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -53,9 +54,9 @@ const AnimatedLogo = ({
     shimmer: {
       opacity: [0.7, 1, 0.7],
       textShadow: [
-        "0 0 5px rgba(138, 112, 71, 0.2)",
-        "0 0 15px rgba(138, 112, 71, 0.4)",
-        "0 0 5px rgba(138, 112, 71, 0.2)",
+        `0 0 5px ${accentColor}33`,
+        `0 0 15px ${accentColor}66`,
+        `0 0 5px ${accentColor}33`,
       ],
       transition: {
         duration: 2.5,
@@ -65,25 +66,63 @@ const AnimatedLogo = ({
     },
   };
 
+  // Rotate animation for decorative elements
+  const rotateVariants = {
+    rotate: {
+      rotate: [0, 360],
+      transition: {
+        duration: 30,
+        repeat: Infinity,
+        ease: "linear",
+      },
+    },
+  };
+
   return (
-    <div
-      className="flex items-center justify-center bg-transparent"
-      style={{ width: size, height: size }}
-    >
+    <div className="flex items-center justify-center bg-transparent w-full">
       <motion.div
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
         variants={logoVariants}
         className="relative flex items-center justify-center"
+        style={{ width: '100%', maxWidth: size, height: 'auto', aspectRatio: '1/1' }}
       >
+        {/* Background glow */}
+        <motion.div
+          className="absolute rounded-full opacity-20"
+          style={{
+            width: '95%',
+            height: '95%',
+            background: `radial-gradient(circle, ${accentColor} 0%, transparent 70%)`,
+          }}
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.1, 0.2, 0.1],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Decorative rotating ring */}
+        <motion.div
+          className="absolute w-full h-full rounded-full"
+          style={{
+            border: `1px dashed ${accentColor}80`,
+            borderRadius: '50%',
+          }}
+          variants={rotateVariants}
+          animate="rotate"
+        />
+
         {/* Outer pulsing ring */}
         <motion.div
-          className="absolute rounded-full"
+          className="absolute rounded-full w-full h-full"
           style={{
-            width: size,
-            height: size,
-            border: `2px solid #111`,
-            boxShadow: `0 0 15px #111`,
+            border: `2px solid ${accentColor}`,
+            boxShadow: `0 0 15px ${accentColor}80`,
           }}
           variants={pulseVariants}
           animate="pulse"
@@ -93,10 +132,11 @@ const AnimatedLogo = ({
         <motion.div
           className="absolute rounded-full"
           style={{
-            width: size * 0.8,
-            height: size * 0.8,
-            backgroundColor: "rgba(0, 0, 0, 0.1)",
-            border: `1px solid #122e33`,
+            width: '80%',
+            height: '80%',
+            background: `radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%)`,
+            border: `1px solid ${accentColor}40`,
+            boxShadow: `inset 0 0 20px rgba(0,0,0,0.05)`,
           }}
         />
 
@@ -108,11 +148,16 @@ const AnimatedLogo = ({
         >
           <div
             className="font-serif tracking-wider"
-            style={{ color: '#111' }}
+            style={{ color: color }}
           >
-            <div className="text-4xl font-light mb-2">PHYSIO</div>
-            <div className="text-5xl font-medium">GHAR</div>
-            <div className="text-xs mt-4 tracking-widest">PREMIUM CARE</div>
+            <div className="text-2xl xs:text-3xl sm:text-4xl font-light mb-1 sm:mb-2">PHYSIO</div>
+            <div className="text-3xl xs:text-4xl sm:text-5xl font-medium" style={{ color: accentColor }}>GHAR</div>
+            <div 
+              className="text-[10px] xs:text-xs mt-2 sm:mt-4 tracking-widest"
+              style={{ color: `${color}99` }}
+            >
+              PREMIUM CARE
+            </div>
           </div>
         </motion.div>
       </motion.div>
