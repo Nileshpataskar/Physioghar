@@ -20,7 +20,7 @@ export const HeroBanner = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 1000);
+        }, 2000);
 
         return () => {
             clearInterval(intervalId);
