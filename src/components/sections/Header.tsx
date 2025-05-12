@@ -34,7 +34,7 @@ const Header = () => {
                     top: 0,
                     width: '100%',
                     boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    background: 'rgba(255,255,255,0.05)',
+                    background: 'rgba(255,255,255,0.8)',
                     backdropFilter: 'blur(8px)',
                     zIndex: 100,
                     duration: 0.3,
@@ -44,8 +44,8 @@ const Header = () => {
             onLeaveBack: () => {
                 gsap.to(headerRef.current, {
                     boxShadow: 'none',
-                    background: 'transparent',
-                    backdropFilter: 'blur(0px)',
+                    background: 'rgba(255,255,255,0.5)',
+                    backdropFilter: 'blur(8px)',
                     duration: 0.3,
                     ease: 'power2.out',
                 });
@@ -59,8 +59,8 @@ const Header = () => {
             className="py-3 px-6 md:px-10  flex sticky items-center  justify-between transition-all duration-300 "
         >
             <div className="flex items-center ">
-                <div className="text-2xl font-bold text-primary flex items-center">
-                    <img src='/logo.png' alt="Doctor consulting with a patient" className='w-20' />
+                <div className="text-2xl font-bold text-primary flex items-center ">
+                    <img src='/logo.png' alt="Doctor consulting with a patient" className='w-28' />
                 </div>
                 {/* <div className="text-2xl font-bold text-primary flex items-center">
                     <svg
