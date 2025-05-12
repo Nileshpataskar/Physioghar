@@ -1,7 +1,63 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const WhatIsPhysioterapy = () => {
     const physiotherapyRef = useRef(null);
+
+    useEffect(() => {
+        ScrollTrigger.create({
+            trigger: physiotherapyRef.current,
+            start: 'top 80%',
+            onEnter: () => {
+                // Text blocks fly in with blur
+                gsap.fromTo(
+                    '.physio-text',
+                    { y: 30, opacity: 0, filter: 'blur(5px)' },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        duration: 0.8,
+                        stagger: 0.2,
+                        ease: 'power2.out',
+                    }
+                )
+
+                // Icons pop in then float
+                gsap.fromTo(
+                    '.physio-icon',
+                    { scale: 0, opacity: 0, rotation: -15 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        rotation: 0,
+                        duration: 0.7,
+                        stagger: 0.15,
+                        ease: 'elastic.out(1, 0.5)',
+                        onComplete: () => {
+                            // subtle floating loop
+                            gsap.to('.physio-icon', {
+                                y: '-=8',
+                                duration: 1.5,
+                                repeat: -1,
+                                yoyo: true,
+                                ease: 'sine.inOut',
+                                stagger: 0.2,
+                            })
+                        },
+                    }
+                )
+            },
+            once: true,
+        })
+
+        // cleanup
+        return () => ScrollTrigger.getAll().forEach(t => t.kill())
+    }, [])
+
 
     return (
         <section

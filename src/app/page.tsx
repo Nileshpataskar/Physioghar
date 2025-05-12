@@ -1,13 +1,28 @@
 'use client'
-import Home from "@/components/home"
+import { Appointement } from "@/components/sections/Appointement"
+import { Contact } from "@/components/sections/Contact"
+import FirstVisit from "@/components/sections/FirstVisit"
+import Footer from "@/components/sections/Footer"
+import Header from "@/components/sections/Header"
 import { HeroBanner } from "@/components/sections/HeroBanner"
+import ModeOfCare from "@/components/sections/ModeOfCare"
+import StickyPhone from "@/components/sections/StickyPhone"
+import { Vision } from "@/components/sections/Vision"
 import WhatIsPhysioterapy from "@/components/sections/WhatIsPhysioterapy"
 
 const Page = () => {
   return (
     <div>
+      <Header />
       <HeroBanner />
       <WhatIsPhysioterapy />
+      <Vision />
+      <ModeOfCare />
+      <FirstVisit />
+      <Appointement />
+      <Contact />
+      <Footer />
+      <StickyPhone />
       {/* <Home /> */}
     </div>
   )

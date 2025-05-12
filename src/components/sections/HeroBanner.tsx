@@ -1,8 +1,56 @@
-import React, { useRef } from 'react'
-import { Button } from '../ui/button'
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '../ui/button';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const HeroBanner = () => {
-    const heroRef = useRef(null);
+    const heroRef = useRef<HTMLElement>(null);
+    const images = [
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80",
+        "https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?w=1200&q=80",
+        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+        'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=1200&q=80',
+
+
+    ]; // 9-10 physiotherapy/hospital images
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 1000);
+
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, [images.length]);
+
+    useEffect(() => {
+        // Parallax scroll of the images container
+        gsap.to('.hero-parallax', {
+            y: '30%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: heroRef.current,
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true,
+            },
+        });
+
+        // Fade & slide up the text/content
+        gsap.fromTo(
+            '.hero-content',
+            { y: 50, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1.5, ease: 'power2.out' }
+        );
+
+        return () => {
+            ScrollTrigger.getAll().forEach((t) => t.kill());
+        };
+    }, []);
 
     return (
         <section
@@ -11,27 +59,16 @@ export const HeroBanner = () => {
             className="relative h-[500px] md:h-[650px] overflow-hidden rounded-b-3xl md:rounded-b-[4rem] shadow-xl"
         >
             <div className="absolute inset-0 flex hero-parallax">
-                <div
-                    className="hero-image opacity-0 absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80')",
-                    }}
-                ></div>
-                <div
-                    className="hero-image opacity-0 absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=80')",
-                    }}
-                ></div>
-                <div
-                    className="hero-image opacity-0 absolute inset-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage:
-                            "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80')",
-                    }}
-                ></div>
+                {images.map((src, idx) => (
+                    <div
+                        key={src}
+                        className="hero-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                        style={{
+                            backgroundImage: `url('${src}')`,
+                            opacity: idx === currentIndex ? 1 : 0,
+                        }}
+                    />
+                ))}
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-primary/30 flex items-center justify-center">
                 <div className="text-center text-white p-6 hero-content max-w-4xl">
@@ -41,7 +78,7 @@ export const HeroBanner = () => {
                         </span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                        Personalized{" "}
+                        Personalized{' '}
                         <span className="text-primary/90 relative">
                             Physiotherapy
                             <svg
@@ -56,11 +93,11 @@ export const HeroBanner = () => {
                                     strokeWidth="2"
                                 />
                             </svg>
-                        </span>{" "}
+                        </span>{' '}
                         Care
                     </h1>
                     <p className="text-xl md:text-2xl mb-8">
-                        Wherever You Are, Whenever You Need
+                        Personalized Physiotherapy Care. Wherever You Are
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button size="lg" className="px-8 py-6 rounded-full text-base">
@@ -88,7 +125,7 @@ export const HeroBanner = () => {
                     </div>
                 </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
         </section>
-    )
-}
+    );
+};
