@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Card } from '../ui/card'
 
 export const Vision = () => {
-        const specialtiesRef = useRef(null);
+    const specialtiesRef = useRef(null);
 
     return (
         <section
@@ -14,13 +14,9 @@ export const Vision = () => {
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full -translate-x-1/3 translate-y-1/3"></div>
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12 relative z-10">
-                    <div className="inline-block px-4 py-1 rounded-full bg-primary/10 mb-4">
-                        <span className="text-sm font-medium text-primary">
-                            Our Expertise
-                        </span>
-                    </div>
+
                     <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                        Vision & <span className="text-primary">Specialties</span>
+                        Vision 
                     </h2>
                     <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                         A place where healing begins and wellness thrives...

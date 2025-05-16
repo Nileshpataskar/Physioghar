@@ -50,33 +50,28 @@ const FirstVisit = () => {
                     {[
                         {
                             step: 1,
-                            title: "Initial Assessment",
-                            description:
-                                "We'll discuss your medical history and current condition to understand your needs.",
+                            title: 'Consultation',
+                            description: 'Detailed case history and physical assessment to evaluate pain, posture, movement, strength, and function using medical tests. Followed by a clear explanation of findings.',
                         },
                         {
                             step: 2,
-                            title: "Physical Examination",
-                            description:
-                                "Our physiotherapist will conduct a thorough examination to identify the root cause of your problem.",
+                            title: 'Treatment Begins',
+                            description: 'Your treatment will start based on the assessment and needs.',
                         },
                         {
                             step: 3,
-                            title: "Treatment Plan",
-                            description:
-                                "We'll develop a personalized treatment plan tailored to your specific needs and goals.",
+                            title: 'Your Personalised Recovery Plan',
+                            description: 'We outline your custom path to wellness with short- and long-term goals.',
                         },
                         {
                             step: 4,
-                            title: "Begin Treatment",
-                            description:
-                                "Your first session may include initial treatment techniques to start your recovery journey.",
+                            title: 'Progress Monitoring & Adjustments',
+                            description: 'We’ll regularly monitor your progress and adjust the plan to ensure optimal recovery.',
                         },
                         {
                             step: 5,
-                            title: "Home Exercise Program",
-                            description:
-                                "You'll receive guidance on exercises to continue your progress at home.",
+                            title: 'Post Treatment Care and Prevention',
+                            description: 'Guidance and strategies to prevent recurrence and maintain your well-being.',
                         },
                     ].map((step, index) => (
                         <div key={index} className="flex step-item">
@@ -95,6 +90,7 @@ const FirstVisit = () => {
                         </div>
                     ))}
                 </div>
+
             </div>
         </section>
     )

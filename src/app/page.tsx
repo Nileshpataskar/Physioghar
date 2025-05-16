@@ -1,6 +1,7 @@
 'use client'
 import { Appointement } from "@/components/sections/Appointement"
 import { Contact } from "@/components/sections/Contact"
+import OurCoreValues from "@/components/sections/CoreValues"
 import FirstVisit from "@/components/sections/FirstVisit"
 import Footer from "@/components/sections/Footer"
 import Header from "@/components/sections/Header"
@@ -17,6 +18,7 @@ const Page = () => {
       <HeroBanner />
       <WhatIsPhysioterapy />
       <Vision />
+      <OurCoreValues />
       <ModeOfCare />
       <FirstVisit />
       <Appointement />

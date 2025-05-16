@@ -21,11 +21,7 @@ export const Appointement = () => {
             <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full -translate-x-1/3 -translate-y-1/3"></div>
             <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
             <div className="max-w-4xl mx-auto">
-                <div className="inline-block px-4 py-1 rounded-full bg-primary/10 mb-4 mx-auto text-center block">
-                    <span className="text-sm font-medium text-primary">
-                        Schedule Now
-                    </span>
-                </div>
+               
                 <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
                     Book Your <span className="text-primary">Appointment</span>
                 </h2>
