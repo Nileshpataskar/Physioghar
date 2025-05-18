@@ -6,6 +6,7 @@ import FirstVisit from "@/components/sections/FirstVisit"
 import Footer from "@/components/sections/Footer"
 import Header from "@/components/sections/Header"
 import { HeroBanner } from "@/components/sections/HeroBanner"
+import ServiceOptions from "@/components/sections/ServiceOption"
 // import ModeOfCare from "@/components/sections/ModeOfCare"
 import StickyPhone from "@/components/sections/StickyPhone"
 import TreatmentCategories from "@/components/sections/TreatmentCategories"
@@ -20,6 +21,7 @@ const Page = () => {
       <WhatIsPhysioterapy />
       <Vision />
       <OurCoreValues />
+      <ServiceOptions />
       {/* <ModeOfCare /> */}
       <TreatmentCategories />
       <FirstVisit />
