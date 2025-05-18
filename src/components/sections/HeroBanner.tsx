@@ -56,7 +56,7 @@ export const HeroBanner = () => {
         <section
             id="home"
             ref={heroRef}
-            className="relative h-[500px] md:h-[650px] overflow-hidden rounded-b-3xl md:rounded-b-[4rem] shadow-xl"
+            className="relative sm:mt-20 h-[80vh] overflow-hidden "
         >
             <div className="absolute inset-0 flex hero-parallax">
                 {images.map((src, idx) => (

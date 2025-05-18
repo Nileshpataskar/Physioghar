@@ -1,99 +1,109 @@
-import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import React, { useState } from "react";
+import {
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    CardDescription,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { format } from "date-fns";
+import {
+    CalendarIcon,
+    Clock,
+    MapPin,
+    Phone,
+    Mail,
+    Instagram,
+    Facebook,
+    Youtube,
+} from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger)
-
-const FirstVisit = () => {
-    const firstVisitRef = useRef(null);
-
-    useEffect(() => {
-        const triggerEl = firstVisitRef.current!
-        ScrollTrigger.create({
-            trigger: triggerEl,
-            start: 'top 80%',
-            onEnter: () => {
-                gsap.fromTo(
-                    '.step-item',
-                    { x: -50, opacity: 0 },
-                    {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        stagger: 0.2,
-                        ease: 'power2.out',
-                    }
-                )
-            },
-            once: true,
-        })
-
-        return () => ScrollTrigger.getAll().forEach((t) => t.kill())
-    }, [])
-
-    return (
-        <section
-            ref={firstVisitRef}
-            className="py-20 px-6 md:px-10 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden"
-        >
-            <div className="absolute top-1/2 right-0 w-72 h-72 bg-primary/5 rounded-full translate-x-1/2 -translate-y-1/2"></div>
-            <div className="max-w-6xl mx-auto">
-                <div className="inline-block px-4 py-1 rounded-full bg-primary/10 mb-4 mx-auto text-center block">
-                    <span className="text-sm font-medium text-primary">
-                        What to Expect
-                    </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-                    Your <span className="text-primary">First Visit</span>
-                </h2>
-                <div className="space-y-8">
-                    {[
-                        {
-                            step: 1,
-                            title: 'Consultation',
-                            description: 'Detailed case history and physical assessment to evaluate pain, posture, movement, strength, and function using medical tests. Followed by a clear explanation of findings.',
-                        },
-                        {
-                            step: 2,
-                            title: 'Treatment Begins',
-                            description: 'Your treatment will start based on the assessment and needs.',
-                        },
-                        {
-                            step: 3,
-                            title: 'Your Personalised Recovery Plan',
-                            description: 'We outline your custom path to wellness with short- and long-term goals.',
-                        },
-                        {
-                            step: 4,
-                            title: 'Progress Monitoring & Adjustments',
-                            description: 'We’ll regularly monitor your progress and adjust the plan to ensure optimal recovery.',
-                        },
-                        {
-                            step: 5,
-                            title: 'Post Treatment Care and Prevention',
-                            description: 'Guidance and strategies to prevent recurrence and maintain your well-being.',
-                        },
-                    ].map((step, index) => (
-                        <div key={index} className="flex step-item">
-                            <div className="mr-6">
-                                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/70 text-white flex items-center justify-center font-bold shadow-md shadow-primary/20">
-                                    {step.step}
-                                </div>
-                                {index < 4 && (
-                                    <div className="w-0.5 h-16 bg-primary/30 mx-auto"></div>
-                                )}
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-medium mb-2">{step.title}</h3>
-                                <p className="text-muted-foreground">{step.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-            </div>
-        </section>
-    )
+interface AppointmentSectionProps {
+    className?: string;
 }
 
-export default FirstVisit
+const FirstVisit: React.FC<AppointmentSectionProps> = ({
+    className = "",
+}) => {
+    const [date, setDate] = useState<Date | undefined>(new Date());
+    const [time, setTime] = useState<string>("10:00");
+    const [sessionMode, setSessionMode] = useState<string>("clinic");
+
+    // Patient journey steps
+    const journeySteps = [
+        {
+            title: "Consultation",
+            description:
+                "Detailed case history and physical assessment to evaluate pain, posture, movement, strength and functions with medical tests.",
+        },
+        {
+            title: "Treatment Begins",
+            description: "Initial therapy sessions based on your assessment results.",
+        },
+        {
+            title: "Personalized Recovery Plan",
+            description:
+                "Your road to wellness with customized exercises and therapy.",
+        },
+        {
+            title: "Progress Monitoring",
+            description:
+                "Regular evaluations and adjustments to your treatment plan.",
+        },
+        {
+            title: "Post-treatment Care",
+            description:
+                "Prevention strategies and maintenance exercises for long-term health.",
+        },
+    ];
+
+    return (
+        <div
+            className={`w-full bg-gradient-to-b from-gray-50 to-white py-24 ${className}`}
+        >
+            <div className="container mx-auto px-4">
+                <div className="mb-16">
+                    <h2 className="text-4xl font-bold text-center mb-16 text-primary">
+                        Our Process for Your First Physiotherapy Visit
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                        {journeySteps.map((step, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col items-center text-center"
+                            >
+                                <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold mb-6 shadow-lg">
+                                    {index + 1}
+                                </div>
+                                <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    {step.description}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    );
+};
+
+export default FirstVisit;

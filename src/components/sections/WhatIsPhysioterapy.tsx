@@ -60,34 +60,22 @@ const WhatIsPhysioterapy = () => {
 
 
     return (
-        <section
-            id="about"
-            ref={physiotherapyRef}
-            className="py-20 px-6 md:px-10 bg-white relative overflow-hidden"
-        >
-            <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-blue-100/50 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-green-100/50 blur-3xl"></div>
-            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
+        <section className="py-20 px-4 md:px-8 lg:px-16 bg-gray-50">
             <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center relative">
-                    <span className="inline-block relative">
-                        What Is <span className="text-primary">Physiotherapy</span>?
-                        <div className="absolute -bottom-3 left-0 right-0 h-1 bg-primary/30 rounded-full"></div>
-                    </span>
+                <h2 className="text-4xl font-bold mb-8 text-center text-primary">
+                    What is Physiotherapy?
                 </h2>
-                <div className="grid md:grid-cols gap-10">
-
-                    <div className="physio-text">
-                        <p className="text-lg mb-4">Physiotherapy is a science-based healthcare profession that focuses on improving movement, function, and quality of life. Using a combination of manual therapy, targeted exercises, education, and modern equipment.
-                        </p>
-                        <p className="mb-4">
-                            It’s not just about treating pain—it’s about finding the root cause of the problem and helping patients recover in a safe, sustainable way.
-                        </p>
-                    </div>
-                </div>
+                <p className="text-xl text-gray-700 mb-10 text-center max-w-4xl mx-auto leading-relaxed">
+                    Physiotherapy is a science-based healthcare profession that focuses
+                    on improving movement, function, and quality of life. Using a
+                    combination of manual therapy, targeted exercises, education, and
+                    modern equipment. It's not just about treating pain—it's about
+                    finding the root cause of the problem and helping patients recover
+                    in a safe, sustainable way.
+                </p>
             </div>
         </section>
+
     )
 }
 
