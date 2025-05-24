@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react'
 import { Button } from '../ui/button'
 import { CalendarIcon, Phone } from 'lucide-react'

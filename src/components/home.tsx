@@ -35,6 +35,11 @@ const Home = () => {
     const bookingRef = useRef(null);
     const contactRef = useRef(null);
     const [date, setDate] = React.useState<Date>();
+    const [currentYear, setCurrentYear] = React.useState<number>(2024);
+
+    useEffect(() => {
+        setCurrentYear(new Date().getFullYear());
+    }, []);
 
     // Register ScrollTrigger plugin
     useEffect(() => {
@@ -1396,7 +1401,7 @@ const Home = () => {
                     <Separator className="my-6 bg-slate-700" />
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <p className="text-slate-400 text-sm">
-                            © {new Date().getFullYear()} Physio Ghar. All rights reserved.
+                            © {currentYear} Physio Ghar. All rights reserved.
                         </p>
                         <div className="flex space-x-4 mt-4 md:mt-0">
                             <a

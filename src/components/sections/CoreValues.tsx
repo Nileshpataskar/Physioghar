@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -38,6 +40,39 @@ const values: CoreValue[] = [
 const OurCoreValues: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
 
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        // Create scroll trigger for the section
+        ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            onEnter: () => {
+                // Animate the core value items
+                gsap.fromTo(
+                    '.cv-item',
+                    { 
+                        y: 30, 
+                        opacity: 0,
+                        scale: 0.95
+                    },
+                    { 
+                        y: 0, 
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        stagger: 0.1,
+                        ease: 'power2.out'
+                    }
+                );
+            },
+            once: true
+        });
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, []);
 
     return (
         <section

@@ -1,77 +1,61 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Building2, Home, Video } from "lucide-react";
 
 interface ServiceOptionProps {
   title: string;
-  description: string;
-  icon: React.ReactNode;
+  image: string;
 }
 
-const ServiceOption = (
-  { title, description, icon }: ServiceOptionProps = {
-    title: "Service Option",
-    description: "Description of the service option",
-    icon: <Building2 className="h-10 w-10" />,
-  },
-) => {
+const ServiceOption = ({ title, image }: ServiceOptionProps) => {
   return (
-    <Card className="h-full bg-white shadow-md hover:shadow-lg transition-shadow">
-      <CardContent className="flex flex-col items-center p-6 text-center">
-        <div className="rounded-full bg-primary/10 p-4 mb-4">{icon}</div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
-      </CardContent>
-    </Card>
+    <div className="flex flex-col items-center justify-start bg-white border border-gray-200 rounded-2xl shadow-md transition-transform hover:scale-105 hover:shadow-xl p-6 sm:p-8 w-full h-full">
+      <h3 className="text-lg sm:text-xl font-bold text-center text-gray-800 mb-2">
+        {title}
+      </h3>
+      <div className="flex items-center justify-center mb-5">
+        <img
+          src={image}
+          alt={title}
+          className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-cover rounded-full border-4 border-primary/20 shadow-md bg-gray-50"
+        />
+      </div>
+    </div>
   );
 };
 
 const ServiceOptions = () => {
   const services = [
     {
-      title: "Clinic Visit",
-      description:
-        "Visit our state-of-the-art clinic for personalized care in a professional setting.",
-      icon: <Building2 className="h-10 w-10 text-primary" />,
+      title: "Physiotherapy at Clinic",
+      image: "/service/clinic.jpg",
     },
     {
-      title: "Home Visit",
-      description:
-        "Receive expert physiotherapy care in the comfort of your own home.",
-      icon: <Home className="h-10 w-10 text-primary" />,
+      title: "Physiotherapy at Home",
+      image: "/service/home.jpg",
     },
     {
       title: "Online Consultation",
-      description:
-        "Connect with our specialists virtually for guidance and treatment plans.",
-      icon: <Video className="h-10 w-10 text-primary" />,
+      image: "/service/online.jpg",
     },
   ];
 
   return (
-    <section className="py-16 px-4 bg-background">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2">Physiotherapy, your way</h2>
-          <p className="text-xl mb-4">Get Physiotherapy how you prefer</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceOption
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-            />
-          ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <p className="text-xl font-medium text-primary italic">
-            We'll support you—wherever you are.
-          </p>
-        </div>
+    <section className="py-14 px-2 bg-white min-h-screen flex flex-col items-center justify-start">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-2">
+          Physiotherapy, your way
+        </h2>
+        <p className="text-lg sm:text-xl text-gray-600 mb-4">
+          Get Physiotherapy how you prefer
+        </p>
+      </div>
+      <div className=" max-w-5xl grid grid-cols-1 sm:grid-cols-1 gap-8">
+        {services.map((service, index) => (
+          <ServiceOption
+            key={index}
+            title={service.title}
+            image={service.image}
+          />
+        ))}
       </div>
     </section>
   );
