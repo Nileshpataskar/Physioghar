@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface ServiceOptionProps {
   title: string;
@@ -12,11 +13,17 @@ const ServiceOption = ({ title, image }: ServiceOptionProps) => {
         {title}
       </h3>
       <div className="flex items-center justify-center mb-5">
-        <img
-          src={image}
-          alt={title}
-          className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-cover rounded-full border-4 border-primary/20 shadow-md bg-gray-50"
-        />
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 96px, (max-width: 1024px) 112px, 128px"
+            quality={75}
+            className="object-cover rounded-full border-4 border-primary/20 shadow-md bg-gray-50"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   );

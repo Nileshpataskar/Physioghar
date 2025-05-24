@@ -3,11 +3,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const HeroBanner = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
   const images = [
     "/hero/img1.jpg",
     "/hero/img2.jpg",
@@ -16,60 +20,118 @@ export const HeroBanner = () => {
     "/hero/img5.jpg",
     "/hero/img6.jpg",
     "/hero/img7.jpg",
-  ]; // 9-10 physiotherapy/hospital images
-  const [currentIndex, setCurrentIndex] = useState(0);
+  ];
 
+  // Preload images
   useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new window.Image();
+          img.src = src;
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+      });
+
+      try {
+        await Promise.all(imagePromises);
+        setImagesLoaded(true);
+      } catch (error) {
+        console.error("Error preloading images:", error);
+      }
+    };
+
+    preloadImages();
+  }, []);
+
+  // Image carousel effect
+  useEffect(() => {
+    if (!imagesLoaded) return;
+
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 3000); // Increased interval for better performance
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [images.length]);
+  }, [images.length, imagesLoaded]);
 
+  // Optimized animations
   useEffect(() => {
-    // Parallax scroll of the images container
-    gsap.to(".hero-parallax", {
-      y: "30%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
+    if (!imagesLoaded) return;
 
-    // Fade & slide up the text/content
-    gsap.fromTo(
-      ".hero-content",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }
-    );
+    const ctx = gsap.context(() => {
+      // Simplified parallax effect
+      gsap.to(".hero-parallax", {
+        y: "20%", // Reduced parallax amount
+        ease: "none",
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1, // Smoother scrubbing
+        },
+      });
+
+      // Optimized content animation
+      gsap.fromTo(
+        ".hero-content",
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 1,
+          ease: "power2.out",
+          clearProps: "all" // Clean up after animation
+        }
+      );
+    }, heroRef);
 
     return () => {
+      ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, []);
+  }, [imagesLoaded]);
+
+  if (!imagesLoaded) {
+    return (
+      <section
+        ref={heroRef}
+        className="relative sm:mt-20 h-[100vh] overflow-hidden bg-gray-100"
+      >
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="animate-pulse text-primary">Loading...</div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
-      id="home"
       ref={heroRef}
-      className="relative sm:mt-20 h-[100vh] overflow-hidden "
+      className="relative sm:mt-40 h-[100vh] overflow-hidden"
     >
       <div className="absolute inset-0 flex hero-parallax">
         {images.map((src, idx) => (
           <div
             key={src}
-            className="hero-image absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            className="hero-image absolute inset-0 transition-opacity duration-1000"
             style={{
-              backgroundImage: `url('${src}')`,
               opacity: idx === currentIndex ? 1 : 0,
             }}
-          />
+          >
+            <Image
+              src={src}
+              alt={`Hero image ${idx + 1}`}
+              fill
+              priority={idx === 0}
+              quality={85}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
         ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-primary/30 flex items-center justify-center">
@@ -101,7 +163,7 @@ export const HeroBanner = () => {
           <p className="text-xl md:text-2xl mb-8">
             Personalized Physiotherapy Care. Wherever You Are
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="px-8 py-6 rounded-full text-base">
               Book Consultation
             </Button>

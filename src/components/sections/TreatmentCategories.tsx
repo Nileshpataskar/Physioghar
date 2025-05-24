@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { categories } from "@/lib/Categories";
+import Image from "next/image";
 
 export interface ConditionItem {
     name: string;
@@ -108,10 +109,14 @@ const TreatmentCategories = () => {
                                             onClick={() => setSelectedCondition(condition)}
                                         >
                                             <div className="aspect-w-16 aspect-h-9 relative h-52 overflow-hidden">
-                                                <img
+                                                <Image
                                                     src={condition.image}
                                                     alt={condition.name}
-                                                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                    quality={75}
+                                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                    loading="lazy"
                                                 />
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                                                     <div className="p-4">
