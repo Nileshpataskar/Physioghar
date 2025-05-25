@@ -111,7 +111,7 @@ export const HeroBanner = () => {
   return (
     <section
       ref={heroRef}
-      className="relative sm:mt-40 h-[100vh] overflow-hidden"
+      className="relative sm:mt-32 h-[100vh] overflow-hidden"
     >
       <div className="absolute inset-0 flex hero-parallax">
         {images.map((src, idx) => (

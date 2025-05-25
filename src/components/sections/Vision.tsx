@@ -62,7 +62,7 @@ export const Vision = () => {
           </p>
 
           <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-5 sm:p-7 rounded-xl shadow border border-primary/10 max-w-2xl mx-auto mt-2">
-            <p className="text-base sm:text-lg md:text-xl text-primary italic text-center font-medium leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-primary  text-center font-medium leading-normal">
               "A place where healing begins with kindness, movement is celebrated and every patient feels empowered to live their best life."
             </p>
           </div>

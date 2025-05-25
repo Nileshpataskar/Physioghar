@@ -51,7 +51,7 @@ const WhatIsPhysiotherapy = () => {
 
       <div className="max-w-6xl mx-auto relative">
         <div className="physio-text space-y-6 sm:space-y-20">
-          <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 text-center max-w-4xl mx-auto leading-relaxed px-2 sm:px-4">
+          <p className="text-lg sm:text-2xl md:text-3xl text-gray-700 text-center max-w-5xl mx-auto leading-relaxed font-normal mb-8">
             <span className="text-primary font-bold">Physiotherapy</span> is a
             science-based healthcare profession that focuses on improving
             movement, function, and quality of life. Using a combination of
@@ -59,7 +59,7 @@ const WhatIsPhysiotherapy = () => {
           </p>
 
           <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg border border-primary/10 max-w-4xl mx-auto">
-            <p className="text-lg sm:text-xl md:text-2xl text-primary italic text-center font-medium leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-primary text-center font-medium leading-relaxed">
               It's not just about treating pain—it's about finding the root
               cause of the problem and helping patients recover in a safe,
               sustainable way.
