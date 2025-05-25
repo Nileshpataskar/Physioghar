@@ -345,8 +345,7 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Osteoarthritis",
-        image:
-          "https://images.unsplash.com/photo-1556889882-73ea40694a98?w=800&q=80",
+        image: "/treatment/geriatric/oste.jpg",
         description:
           "Our approach to osteoarthritis focuses on pain management, maintaining joint mobility, and optimizing function through evidence-based interventions.",
         treatments: [
@@ -359,8 +358,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Degenerative Disc Herniation",
-        image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+        image: "/treatment/geriatric/disc.jpg",
+
         description:
           "Our specialized approach addresses pain, mobility limitations, and functional restrictions associated with degenerative disc conditions.",
         treatments: [
@@ -373,8 +372,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Fall and Balance Disorder",
-        image:
-          "https://images.unsplash.com/photo-1454962561098-713ce2d54c4a?w=800&q=80",
+        image: "/treatment/geriatric/fall.jpg",
+
         description:
           "Our comprehensive fall prevention program addresses risk factors, improves balance, and enhances confidence to reduce fall risk.",
         treatments: [
@@ -387,8 +386,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Chronic Pain Syndrome",
-        image:
-          "https://images.unsplash.com/photo-1566125882500-87e10f726cdc?w=800&q=80",
+        image: "/treatment/geriatric/chronic.jpg",
+
         description:
           "Our multifaceted approach to chronic pain incorporates pain neuroscience education, graded activity, and self-management strategies.",
         treatments: [
@@ -401,8 +400,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Chronic Low Back Pain",
-        image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+        image: "/treatment/geriatric/low.jpg",
+
         description:
           "Our evidence-based approach addresses the complex nature of chronic low back pain through a biopsychosocial framework.",
         treatments: [
@@ -421,10 +420,9 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Rotator Cuff Tear",
-        image:
-          "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80",
+        image: "/treatment/sports/tear.jpg",
         description:
-          "Our specialized rehabilitation for rotator cuff injuries focuses on restoring shoulder function, strength, and sport-specific demands.",
+          "Specialized rehab for rotator cuff injuries to restore shoulder strength and sport performance.",
         treatments: [
           "Progressive strengthening",
           "Scapular stabilization",
@@ -435,10 +433,9 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Tennis Elbow",
-        image:
-          "https://images.unsplash.com/photo-1612957693059-13b7e8548a0b?w=800&q=80",
+        image: "/treatment/sports/tennis.jpg",
         description:
-          "Our evidence-based approach for tennis elbow addresses pain, strength deficits, and functional limitations to facilitate return to sport.",
+          "Evidence-based rehab for lateral epicondylitis focusing on pain relief and strengthening.",
         treatments: [
           "Eccentric strengthening",
           "Manual therapy",
@@ -448,11 +445,49 @@ export const categories: CategoryTab[] = [
         ],
       },
       {
-        name: "ACL & PCL Injury",
-        image:
-          "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
+        name: "Golfer Elbow",
+        image: "/treatment/sports/tennis.jpg",
         description:
-          "Our comprehensive rehabilitation for ligament injuries follows evidence-based protocols to ensure optimal recovery and safe return to sport.",
+          "Targeted therapy for medial epicondylitis to improve grip strength and reduce elbow strain.",
+        treatments: [
+          "Eccentric wrist flexor training",
+          "Soft tissue mobilization",
+          "Stretching exercises",
+          "Ergonomic education",
+          "Progressive loading program",
+        ],
+      },
+      {
+        name: "Dislocated Shoulder",
+        image: "/treatment/sports/shoulder.jpg",
+        description:
+          "Rehabilitation for post-dislocation shoulder instability to regain full function and prevent recurrence.",
+        treatments: [
+          "Range of motion restoration",
+          "Strengthening rotator cuff and scapular stabilizers",
+          "Proprioceptive training",
+          "Gradual return to activity",
+          "Instability prevention protocols",
+        ],
+      },
+      {
+        name: "Biceps Tendinopathy",
+        image: "/treatment/sports/bicep.jpg",
+        description:
+          "Treatment for overuse injuries to the biceps tendon using progressive loading strategies.",
+        treatments: [
+          "Isometric and eccentric loading",
+          "Soft tissue therapy",
+          "Postural correction",
+          "Stretching tight structures",
+          "Activity modification",
+        ],
+      },
+      {
+        name: "ACL & PCL Injury",
+        image: "/treatment/sports/acl.jpg",
+        description:
+          "Rehab for ligament injuries with evidence-based protocols for safe return to play.",
         treatments: [
           "Neuromuscular training",
           "Progressive strengthening",
@@ -463,10 +498,9 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Meniscal Tear",
-        image:
-          "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
+        image: "/treatment/sports/meniscal.jpg",
         description:
-          "Our approach to meniscal injuries focuses on pain management, restoring function, and implementing appropriate loading strategies.",
+          "Pain management and functional recovery for meniscal injuries.",
         treatments: [
           "Progressive loading",
           "Quadriceps strengthening",
@@ -476,11 +510,62 @@ export const categories: CategoryTab[] = [
         ],
       },
       {
-        name: "Ankle Sprain",
-        image:
-          "https://images.unsplash.com/photo-1508387027939-27cccde53673?w=800&q=80",
+        name: "Runner’s Knee",
+        image: "/treatment/sports/runners-knee.jpg",
         description:
-          "Our comprehensive rehabilitation for ankle sprains addresses acute management, stability, and progressive return to sport activities.",
+          "Patellofemoral pain management to enhance running performance and reduce pain.",
+        treatments: [
+          "Hip and knee strengthening",
+          "Biomechanical correction",
+          "Stretching tight muscles",
+          "Gait retraining",
+          "Activity modification",
+        ],
+      },
+      {
+        name: "Jumper’s Knee",
+        image: "/treatment/sports/jumper.jpg",
+        description:
+          "Treatment for patellar tendinopathy with focus on tendon loading and functional rehab.",
+        treatments: [
+          "Eccentric quadriceps loading",
+          "Shockwave therapy (if applicable)",
+          "Plyometric training",
+          "Functional movement drills",
+          "Gradual return to sport",
+        ],
+      },
+      {
+        name: "IT Band Syndrome",
+        image: "/treatment/sports/it.jpg",
+        description:
+          "Lateral knee pain treatment targeting flexibility, strength and mechanics.",
+        treatments: [
+          "Foam rolling and stretching",
+          "Hip abductor strengthening",
+          "Running form correction",
+          "Activity modification",
+          "Manual therapy",
+        ],
+      },
+      {
+        name: "Groin, Hip Flexor, Hamstring, Quadriceps & Calf Strain",
+        image: "/treatment/sports/groin.jpg",
+        description:
+          "Comprehensive management of lower limb muscle strains to restore strength and flexibility.",
+        treatments: [
+          "Progressive lengthening exercises",
+          "Manual therapy",
+          "Neuromuscular re-education",
+          "Return to sport drills",
+          "Injury prevention programs",
+        ],
+      },
+      {
+        name: "Ankle Sprain",
+        image: "/treatment/sports/ankle.jpg",
+        description:
+          "Rehab focused on stability, proprioception, and sport-specific recovery.",
         treatments: [
           "Proprioceptive training",
           "Progressive strengthening",
@@ -490,17 +575,42 @@ export const categories: CategoryTab[] = [
         ],
       },
       {
-        name: "Hamstring Strain",
-        image:
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+        name: "Overtraining Syndrome",
+        image: "/treatment/sports/overtraining.jpg",
         description:
-          "Our evidence-based approach for hamstring injuries focuses on optimal tissue healing, strength, and preventing recurrence.",
+          "Managing fatigue and recovery strategies for overreached or overtrained athletes.",
         treatments: [
-          "Progressive lengthening exercises",
-          "Eccentric strengthening",
-          "Running mechanics assessment",
-          "Sport-specific rehabilitation",
-          "Return to sport testing",
+          "Training load adjustment",
+          "Nutrition and hydration review",
+          "Psychological counseling",
+          "Sleep hygiene practices",
+          "Recovery planning",
+        ],
+      },
+      {
+        name: "Cramping and Muscle Spasm",
+        image: "/treatment/sports/cramp.jpg",
+        description:
+          "Preventing and managing acute muscle cramps and spasms during or after activity.",
+        treatments: [
+          "Hydration and electrolyte balance",
+          "Neuromuscular stretching",
+          "Soft tissue therapy",
+          "Conditioning strategies",
+          "Education on triggers",
+        ],
+      },
+      {
+        name: "Bursitis",
+        image: "/treatment/sports/bursitis.jpg",
+        description:
+          "Reducing inflammation and restoring function in bursitis-affected joints.",
+        treatments: [
+          "Anti-inflammatory modalities",
+          "Activity modification",
+          "Stretching and strengthening",
+          "Ergonomic corrections",
+          "Manual therapy",
         ],
       },
     ],
