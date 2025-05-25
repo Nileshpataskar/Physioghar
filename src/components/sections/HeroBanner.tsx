@@ -4,14 +4,14 @@ import { Button } from "../ui/button";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
+import clsx from "clsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const HeroBanner = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   const images = [
     "/hero/img1.webp",
     "/hero/img2.webp",
@@ -22,46 +22,16 @@ export const HeroBanner = () => {
     "/hero/img7.webp",
   ];
 
-  // Preload images
-  useEffect(() => {
-    const preloadImages = async () => {
-      const imagePromises = images.map((src) => {
-        return new Promise((resolve, reject) => {
-          const img = new window.Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      });
-
-      try {
-        await Promise.all(imagePromises);
-        setImagesLoaded(true);
-      } catch (error) {
-        console.error("Error preloading images:", error);
-      }
-    };
-
-    preloadImages();
-  }, []);
-
   // Image carousel effect
   useEffect(() => {
-    if (!imagesLoaded) return;
-
     const intervalId = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Increased interval for better performance
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [images.length, imagesLoaded]);
+    }, 3000);
+    return () => clearInterval(intervalId);
+  }, [images.length]);
 
   // Optimized animations
   useEffect(() => {
-    if (!imagesLoaded) return;
-
     const ctx = gsap.context(() => {
       // Simplified parallax effect
       gsap.to(".hero-parallax", {
@@ -93,33 +63,25 @@ export const HeroBanner = () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [imagesLoaded]);
-
-  if (!imagesLoaded) {
-    return (
-      <section
-        ref={heroRef}
-        className="relative sm:mt-20 h-[100vh] overflow-hidden bg-gray-100"
-      >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="animate-pulse text-primary">Loading...</div>
-        </div>
-      </section>
-    );
-  }
+  }, []);
 
   return (
     <section
       ref={heroRef}
       className="relative sm:mt-32 h-[100vh] overflow-hidden"
     >
-      <div className="absolute inset-0 flex hero-parallax">
+      <div className="absolute inset-0 flex hero-parallax rounded-2xl shadow-2xl overflow-hidden">
         {images.map((src, idx) => (
           <div
             key={src}
-            className="hero-image absolute inset-0 transition-opacity duration-1000"
+            className={clsx(
+              "hero-image absolute inset-0 transition-opacity duration-1000 will-change-transform",
+              idx === currentIndex ? "z-10" : "z-0"
+            )}
             style={{
               opacity: idx === currentIndex ? 1 : 0,
+              transform: idx === currentIndex ? "scale(1.05)" : "scale(1)",
+              transition: "opacity 1s, transform 1.5s cubic-bezier(0.4,0,0.2,1)",
             }}
           >
             <Image
@@ -127,15 +89,31 @@ export const HeroBanner = () => {
               alt={`Hero image ${idx + 1}`}
               fill
               priority={idx === 0}
-              quality={85}
+              quality={40}
               sizes="100vw"
-              className="object-cover"
+              className="object-cover rounded-2xl"
             />
+            {/* Soft gradient overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-primary/30" />
           </div>
         ))}
+        {/* Carousel dots */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              className={clsx(
+                "w-3 h-3 rounded-full border-2 border-white bg-white/40 transition-all duration-300 shadow",
+                idx === currentIndex && "bg-primary border-primary scale-125 shadow-lg"
+              )}
+              aria-label={`Go to slide ${idx + 1}`}
+              onClick={() => setCurrentIndex(idx)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-primary/30 flex items-center justify-center">
-        <div className="text-center text-white p-6 hero-content max-w-4xl">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="text-center text-white p-6 hero-content max-w-4xl animate-fade-in">
           <div className="inline-block mb-4 px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm">
             <span className="text-sm font-medium text-white">
               Trusted by 1000+ patients
@@ -167,25 +145,7 @@ export const HeroBanner = () => {
             <Button size="lg" className="px-8 py-6 rounded-full text-base">
               Book Consultation
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="px-8 py-6 rounded-full text-base bg-white/10 backdrop-blur-sm hover:bg-white/20 border-white/30"
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Watch Video
-            </Button>
+           
           </div>
         </div>
       </div>

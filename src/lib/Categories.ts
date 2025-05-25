@@ -118,8 +118,7 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Stroke (Cerebrovascular Accident)",
-        image:
-          "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+        image: "/treatment/neuro/stroke.jpg",
         description:
           "Post-stroke rehabilitation focuses on regaining function, improving mobility, and enhancing quality of life through specialized neurological physiotherapy techniques.",
         treatments: [
@@ -132,8 +131,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Parkinson's Disease",
-        image:
-          "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80",
+        image: "/treatment/neuro/parkinson.jpg",
         description:
           "Our specialized approach for Parkinson's disease focuses on maintaining mobility, improving balance, and enhancing quality of life through targeted interventions.",
         treatments: [
@@ -146,8 +144,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Head Injury",
-        image:
-          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&q=80",
+        image: "/treatment/neuro/head.jpg",
         description:
           "Traumatic brain injury rehabilitation requires a comprehensive approach addressing physical, cognitive, and emotional aspects of recovery.",
         treatments: [
@@ -160,8 +157,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Guillain-Barré Syndrome (GBS)",
-        image:
-          "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80",
+        image: "/treatment/neuro/gbs.jpg",
         description:
           "GBS recovery focuses on progressive strengthening, functional training, and adaptive strategies to regain independence and mobility.",
         treatments: [
@@ -174,8 +170,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Spinal Cord Injury",
-        image:
-          "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80",
+        image: "/treatment/neuro/spinal.jpg",
         description:
           "Our specialized approach for spinal cord injuries focuses on maximizing function, preventing complications, and enhancing quality of life.",
         treatments: [
@@ -188,8 +183,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Myasthenia Gravis",
-        image:
-          "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80",
+        image: "/treatment/neuro/gravis.jpg",
         description:
           "Treatment for myasthenia gravis focuses on energy conservation, strategic strengthening, and functional adaptations to manage fatigue and optimize function.",
         treatments: [
@@ -202,8 +196,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Peripheral Neuropathy",
-        image:
-          "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80",
+        image: "/treatment/neuro/peripheral.jpg",
         description:
           "Our approach to peripheral neuropathy addresses sensory deficits, balance issues, and functional limitations through specialized interventions.",
         treatments: [
@@ -216,8 +209,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Bell's Palsy / Facial Palsy",
-        image:
-          "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
+        image: "/treatment/neuro/bell.jpg",
         description:
           "Facial palsy rehabilitation focuses on muscle reeducation, symmetry, and functional restoration for facial expressions and functions.",
         treatments: [
