@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Button } from "../ui/button";
 import { CalendarIcon, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
@@ -9,6 +9,8 @@ import Link from "next/link";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,35 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Handle escape key
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
   }, []);
 
   // Prevent body scroll when menu is open
@@ -76,9 +107,11 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
+            ref={buttonRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20"
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
               <X className="h-6 w-6 text-gray-600" />
@@ -95,19 +128,25 @@ const Header = () => {
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setIsMenuOpen(false)}
+        aria-hidden={!isMenuOpen}
       />
 
       {/* Mobile Menu Content */}
       <div
+        ref={menuRef}
         className={`lg:hidden fixed top-[72px] right-0 w-[300px] bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile menu"
       >
         <div className="p-6 space-y-4">
           <Button
             variant="outline"
             size="lg"
             className="w-full rounded-full px-6 border-primary/20 hover:bg-primary/5 hover:border-primary/30 transition-all duration-300"
+            onClick={() => setIsMenuOpen(false)}
           >
             <Phone className="h-5 w-5 mr-2" />
             <span className="font-medium">Request Callback</span>
@@ -115,6 +154,7 @@ const Header = () => {
           <Button
             size="lg"
             className="w-full rounded-full px-6 bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+            onClick={() => setIsMenuOpen(false)}
           >
             <CalendarIcon className="h-5 w-5 mr-2" />
             <span className="font-medium">Book Appointment</span>

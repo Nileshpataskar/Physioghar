@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { categories } from "@/lib/Categories";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 export interface ConditionItem {
   name: string;
@@ -20,16 +20,15 @@ export interface CategoryTab {
 const AUTO_SLIDE_INTERVAL = 2500;
 
 const TreatmentCategories = () => {
-  // Track the current slide for each category
   const [activeSlides, setActiveSlides] = useState<{ [key: string]: number }>(
     () => Object.fromEntries(categories.map((cat) => [cat.id, 0]))
   );
   const [selectedCondition, setSelectedCondition] =
     useState<ConditionItem | null>(null);
-  // Track pause state for each category
   const [paused, setPaused] = useState<{ [key: string]: boolean }>(() =>
     Object.fromEntries(categories.map((cat) => [cat.id, false]))
   );
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // Auto-slide effect for each category
   useEffect(() => {
@@ -46,11 +45,49 @@ const TreatmentCategories = () => {
     return () => timers.forEach((timer) => timer && clearInterval(timer));
   }, [paused]);
 
-  // Helper to go to next/prev slide
+  // Handle click outside modal
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setSelectedCondition(null);
+      }
+    };
+
+    if (selectedCondition) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [selectedCondition]);
+
+  // Handle escape key for modal
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && selectedCondition) {
+        setSelectedCondition(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [selectedCondition]);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedCondition) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedCondition]);
+
   const goToSlide = (catId: string, idx: number) => {
     setActiveSlides((prev) => ({ ...prev, [catId]: idx }));
     setPaused((prev) => ({ ...prev, [catId]: true }));
   };
+
   const goLeft = (catId: string, len: number) => {
     setActiveSlides((prev) => ({
       ...prev,
@@ -58,6 +95,7 @@ const TreatmentCategories = () => {
     }));
     setPaused((prev) => ({ ...prev, [catId]: true }));
   };
+
   const goRight = (catId: string, len: number) => {
     setActiveSlides((prev) => ({
       ...prev,
@@ -107,7 +145,7 @@ const TreatmentCategories = () => {
                 >
                   {/* Left arrow */}
                   <button
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
                     onClick={() =>
                       goLeft(category.id, category.conditions.length)
                     }
@@ -117,7 +155,7 @@ const TreatmentCategories = () => {
                   </button>
                   {/* Right arrow */}
                   <button
-                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
                     onClick={() =>
                       goRight(category.id, category.conditions.length)
                     }
@@ -155,7 +193,7 @@ const TreatmentCategories = () => {
                   {category.conditions.map((_, idx) => (
                     <button
                       key={idx}
-                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-200 shadow-md ${
+                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 ${
                         idx === activeIndex
                           ? "bg-primary border-primary scale-110 sm:scale-125 shadow-xl"
                           : "bg-white border-gray-300"
@@ -177,98 +215,89 @@ const TreatmentCategories = () => {
         })}
 
         {/* Modal for condition details */}
-        {selectedCondition && (
-          <motion.div
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
-            onClick={() => setSelectedCondition(null)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+        <AnimatePresence>
+          {selectedCondition && (
             <motion.div
-              className="bg-white rounded-xl sm:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/20"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+              onClick={() => setSelectedCondition(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             >
-              <div className="relative h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
-                <img
-                  src={selectedCondition.image}
-                  alt={selectedCondition.name}
-                  className="w-full h-full object-cover rounded-t-xl sm:rounded-t-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end rounded-t-xl sm:rounded-t-2xl">
-                  <div className="p-4 sm:p-6">
-                    <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow">
-                      {selectedCondition.name}
-                    </h2>
+              <motion.div
+                ref={modalRef}
+                className="bg-white rounded-xl sm:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/20"
+                onClick={(e) => e.stopPropagation()}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              >
+                <div className="relative h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
+                  <img
+                    src={selectedCondition.image}
+                    alt={selectedCondition.name}
+                    className="w-full h-full object-cover rounded-t-xl sm:rounded-t-2xl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end rounded-t-xl sm:rounded-t-2xl">
+                    <div className="p-4 sm:p-6">
+                      <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow">
+                        {selectedCondition.name}
+                      </h2>
+                    </div>
                   </div>
-                </div>
-                <button
-                  className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/30 hover:bg-primary/80 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg transition-colors duration-200"
-                  onClick={() => setSelectedCondition(null)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="sm:w-6 sm:h-6"
-                  >
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                  </svg>
-                </button>
-              </div>
-              <div className="p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
-                  About this condition
-                </h3>
-                <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">
-                  {selectedCondition.description ||
-                    "Detailed information about this condition will be available soon."}
-                </p>
-
-                {selectedCondition.treatments &&
-                  selectedCondition.treatments.length > 0 && (
-                    <>
-                      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
-                        Treatment approaches
-                      </h3>
-                      <ul className="space-y-2 sm:space-y-3">
-                        {selectedCondition.treatments.map((treatment, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start bg-gray-50 p-2 sm:p-3 rounded-lg"
-                          >
-                            <span className="text-primary mr-2 mt-0.5">•</span>
-                            <span className="text-sm sm:text-base text-gray-700">
-                              {treatment}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-
-                <div className="mt-6 sm:mt-8 flex justify-end">
                   <button
-                    className="px-4 sm:px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
+                    className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/30 hover:bg-primary/80 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
                     onClick={() => setSelectedCondition(null)}
+                    aria-label="Close modal"
                   >
-                    Close
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
                   </button>
                 </div>
-              </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
+                    About this condition
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">
+                    {selectedCondition.description ||
+                      "Detailed information about this condition will be available soon."}
+                  </p>
+
+                  {selectedCondition.treatments &&
+                    selectedCondition.treatments.length > 0 && (
+                      <>
+                        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
+                          Treatment approaches
+                        </h3>
+                        <ul className="space-y-2 sm:space-y-3">
+                          {selectedCondition.treatments.map((treatment, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start bg-gray-50 p-2 sm:p-3 rounded-lg"
+                            >
+                              <span className="text-primary mr-2 mt-0.5">•</span>
+                              <span className="text-sm sm:text-base text-gray-700">
+                                {treatment}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+
+                  <div className="mt-6 sm:mt-8 flex justify-end">
+                    <button
+                      className="px-4 sm:px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      onClick={() => setSelectedCondition(null)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
