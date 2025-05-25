@@ -1,13 +1,13 @@
-'use client'
-import Home from '@/components/home'
-import React from 'react'
+"use client";
+import React from "react";
 
 const About = () => {
   return (
     <div>
+      about
       {/* <Home /> */}
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;
