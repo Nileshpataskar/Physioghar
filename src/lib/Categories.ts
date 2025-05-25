@@ -7,7 +7,7 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Cervical Pain / Headache",
-        image: "/treatment/cervical.jpg",
+        image: "/treatment/cervical.webp",
         description:
           "Cervical pain and headaches often result from muscle tension, poor posture, or underlying cervical spine issues. Our specialized physiotherapy approaches target the root causes to provide lasting relief.",
         treatments: [
@@ -20,7 +20,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Low Back Pain",
-        image: "/treatment/lowback.jpg",
+        image: "/treatment/lowback.webp",
 
         description:
           "Low back pain can significantly impact daily activities and quality of life. Our comprehensive assessment identifies the underlying causes to develop personalized treatment plans.",
@@ -34,7 +34,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Shoulder Pain",
-        image: "/treatment/shoulder.jpg",
+        image: "/treatment/shoulder.webp",
         description:
           "Shoulder pain can arise from various conditions including rotator cuff injuries, impingement, or frozen shoulder. Our targeted approach focuses on restoring mobility and function.",
         treatments: [
@@ -47,7 +47,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Elbow Pain",
-        image: "/treatment/elbow.jpg",
+        image: "/treatment/elbow.webp",
         description:
           "Elbow conditions like tennis elbow or golfer's elbow can be debilitating. Our evidence-based treatments address both symptoms and underlying causes for optimal recovery.",
         treatments: [
@@ -60,7 +60,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Wrist and Hand Pain",
-        image: "/treatment/wrist.jpg",
+        image: "/treatment/wrist.webp",
         description:
           "Hand and wrist pain can interfere with daily activities and work. Our specialized treatments focus on restoring function and reducing pain in these complex structures.",
         treatments: [
@@ -73,7 +73,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Hip Pain",
-        image: "/treatment/hip.jpg",
+        image: "/treatment/hip.webp",
         description:
           "Hip pain can stem from joint issues, muscle imbalances, or referred pain. Our comprehensive assessment ensures accurate diagnosis and effective treatment planning.",
         treatments: [
@@ -86,7 +86,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Knee Pain",
-        image: "/treatment/knee.jpg",
+        image: "/treatment/knee.webp",
         description:
           "Knee pain can result from injuries, overuse, or degenerative conditions. Our tailored approach addresses pain while improving strength, stability and function.",
         treatments: [
@@ -99,7 +99,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Ankle & Foot Pain",
-        image: "/treatment/foot.jpg",
+        image: "/treatment/foot.webp",
         description:
           "Ankle and foot conditions can affect mobility and balance. Our specialized treatments target pain relief while restoring proper biomechanics and function.",
         treatments: [

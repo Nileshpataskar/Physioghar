@@ -13,13 +13,13 @@ export const HeroBanner = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   
   const images = [
-    "/hero/img1.jpg",
-    "/hero/img2.jpg",
-    "/hero/img3.jpg",
-    "/hero/img4.jpg",
-    "/hero/img5.jpg",
-    "/hero/img6.jpg",
-    "/hero/img7.jpg",
+    "/hero/img1.webp",
+    "/hero/img2.webp",
+    "/hero/img3.webp",
+    "/hero/img4.webp",
+    "/hero/img5.webp",
+    "/hero/img6.webp",
+    "/hero/img7.webp",
   ];
 
   // Preload images
