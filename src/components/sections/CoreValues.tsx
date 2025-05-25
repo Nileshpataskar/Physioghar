@@ -40,46 +40,13 @@ const values: CoreValue[] = [
 const OurCoreValues: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
 
-    useEffect(() => {
-        if (!sectionRef.current) return;
-
-        // Create scroll trigger for the section
-        ScrollTrigger.create({
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            onEnter: () => {
-                // Animate the core value items
-                gsap.fromTo(
-                    '.cv-item',
-                    { 
-                        y: 30, 
-                        opacity: 0,
-                        scale: 0.95
-                    },
-                    { 
-                        y: 0, 
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.8,
-                        stagger: 0.1,
-                        ease: 'power2.out'
-                    }
-                );
-            },
-            once: true
-        });
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, []);
-
     return (
         <section
             ref={sectionRef}
             className="py-24 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-white to-gray-50"
         >
             <div className="max-w-6xl mx-auto">
+                {/* <img src='/corevalue.jpeg' className='w-full h-80'/> */}
                 <h2 className="text-4xl font-bold mb-3 text-center text-primary">
                     Our Core Values
                 </h2>

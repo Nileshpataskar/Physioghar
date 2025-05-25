@@ -228,8 +228,7 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Cerebral Palsy",
-        image:
-          "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80",
+        image: "/treatment/paediatric/cerebral.jpg",
         description:
           "Our pediatric physiotherapy for cerebral palsy focuses on maximizing movement potential, functional independence, and participation in daily activities.",
         treatments: [
@@ -242,8 +241,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Autism Spectrum Disorder",
-        image:
-          "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
+        image: "/treatment/paediatric/autism.jpg",
+
         description:
           "Our sensory-informed approach addresses motor skills, coordination, and sensory processing to enhance participation and function.",
         treatments: [
@@ -256,8 +255,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "ADHD",
-        image:
-          "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=800&q=80",
+        image: "/treatment/paediatric/adhd.jpg",
+
         description:
           "Physical therapy interventions for ADHD focus on motor skills, coordination, and sensory regulation to support attention and participation.",
         treatments: [
@@ -270,8 +269,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Development Delay/GDD",
-        image:
-          "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80",
+        image: "/treatment/paediatric/delay.jpg",
+
         description:
           "Our developmental approach addresses milestone achievement through play-based, family-centered interventions tailored to each child's needs.",
         treatments: [
@@ -284,8 +283,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Spina Bifida",
-        image:
-          "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800&q=80",
+        image: "/treatment/paediatric/spina.jpg",
+
         description:
           "Our comprehensive approach addresses mobility, strength, and functional independence while preventing secondary complications.",
         treatments: [
@@ -298,8 +297,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Muscular Dystrophy",
-        image:
-          "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+        image: "/treatment/paediatric/muscular.jpg",
+
         description:
           "Our approach focuses on maintaining function, preventing contractures, and enhancing quality of life through specialized interventions.",
         treatments: [
@@ -312,8 +311,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Erb's Palsy",
-        image:
-          "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80",
+        image: "/treatment/paediatric/erb.jpg",
+
         description:
           "Early intervention for Erb's palsy focuses on preventing contractures, facilitating normal movement patterns, and maximizing upper limb function.",
         treatments: [
@@ -326,8 +325,8 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Sensory Processing Disorder",
-        image:
-          "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+        image: "/treatment/paediatric/sensory.jpg",
+
         description:
           "Our sensory-informed approach addresses sensory processing challenges to improve participation, function, and quality of life.",
         treatments: [
