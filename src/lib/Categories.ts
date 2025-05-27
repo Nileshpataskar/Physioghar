@@ -647,8 +647,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Forward Head Posture",
-        image:
-          "https://images.unsplash.com/photo-1566125882500-87e10f726cdc?w=800&q=80",
+        image: "/treatment/ergonomic/head_posture.jpg",
         description:
           "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to forward head posture.",
         treatments: [
@@ -661,8 +660,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Cervicogenic Headache",
-        image:
-          "https://images.unsplash.com/photo-1566125882500-87e10f726cdc?w=800&q=80",
+        image: "/treatment/ergonomic/cv_Headache.jpg",
         description:
           "Our specialized approach addresses the cervical spine dysfunction contributing to headaches through manual therapy and targeted exercises.",
         treatments: [
@@ -676,7 +674,7 @@ export const categories: CategoryTab[] = [
       {
         name: "Postural Kyphosis",
         image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+          "/treatment/ergonomic/ps_k.jpg",
         description:
           "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to excessive thoracic kyphosis.",
         treatments: [
@@ -690,7 +688,7 @@ export const categories: CategoryTab[] = [
       {
         name: "Mechanical Low Back Pain",
         image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+          "/treatment/ergonomic/pain.jpg",
         description:
           "Our approach addresses the movement patterns, muscle imbalances, and ergonomic factors contributing to mechanical low back pain.",
         treatments: [
