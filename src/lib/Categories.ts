@@ -621,8 +621,7 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Upper Cross Syndrome",
-        image:
-          "https://images.unsplash.com/photo-1566125882500-87e10f726cdc?w=800&q=80",
+        image: "/treatment/ergonomic/cross.jpg",
         description:
           "Our approach addresses postural imbalances, muscle length-tension relationships, and ergonomic factors contributing to upper cross syndrome.",
         treatments: [
@@ -635,8 +634,7 @@ export const categories: CategoryTab[] = [
       },
       {
         name: "Lower Cross Syndrome",
-        image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+        image: "/treatment/ergonomic/lowercross.jpg",
         description:
           "Our comprehensive approach addresses the muscle imbalances, movement patterns, and functional limitations associated with lower cross syndrome.",
         treatments: [
