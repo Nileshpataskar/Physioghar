@@ -707,90 +707,187 @@ export const categories: CategoryTab[] = [
     conditions: [
       {
         name: "Hip Replacement Surgery",
-        image:
-          "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
-        description:
-          "Our protocol-based approach for total hip replacement rehabilitation focuses on safe recovery, functional restoration, and return to activities.",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+        description: "Our protocol-based approach for total hip replacement rehabilitation focuses on safe recovery, functional restoration, and return to activities.",
         treatments: [
           "Protocol-based progression",
           "Gait training",
           "Precaution education",
           "Functional training",
-          "Home exercise program",
-        ],
+          "Home exercise program"
+        ]
       },
       {
         name: "Knee Replacement Surgery",
-        image:
-          "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
-        description:
-          "Our comprehensive approach for total knee replacement rehabilitation focuses on range of motion, strength, and functional independence.",
+        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
+        description: "Our comprehensive approach for total knee replacement rehabilitation focuses on range of motion, strength, and functional independence.",
         treatments: [
           "Range of motion exercises",
           "Progressive strengthening",
           "Gait training",
           "Functional activities",
-          "Home exercise program",
-        ],
+          "Home exercise program"
+        ]
       },
       {
         name: "ACL Reconstruction",
-        image:
-          "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
-        description:
-          "Our evidence-based protocol for ACL reconstruction rehabilitation follows established timelines to ensure optimal recovery and return to sport.",
+        image: "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&q=80",
+        description: "Our evidence-based protocol for ACL reconstruction rehabilitation follows established timelines to ensure optimal recovery and return to sport.",
         treatments: [
           "Phase-appropriate exercises",
           "Neuromuscular training",
           "Strength and power development",
           "Sport-specific rehabilitation",
-          "Return to sport testing",
-        ],
+          "Return to sport testing"
+        ]
       },
       {
         name: "Rotator Cuff Repair",
-        image:
-          "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80",
-        description:
-          "Our protocol-based approach for rotator cuff repair rehabilitation respects tissue healing while progressively restoring function.",
+        image: "https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80",
+        description: "Our protocol-based approach for rotator cuff repair rehabilitation respects tissue healing while progressively restoring function.",
         treatments: [
           "Protected range of motion",
           "Progressive strengthening",
           "Scapular stabilization",
           "Functional training",
-          "Return to activity guidance",
-        ],
+          "Return to activity guidance"
+        ]
       },
       {
         name: "Spinal Fusion Surgery",
-        image:
-          "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
-        description:
-          "Our specialized approach for spinal fusion rehabilitation focuses on safe mobility, core stability, and functional independence.",
+        image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80",
+        description: "Our specialized approach for spinal fusion rehabilitation focuses on safe mobility, core stability, and functional independence.",
         treatments: [
           "Safe mobility training",
           "Core stabilization",
           "Body mechanics education",
           "Functional activities",
-          "Home exercise program",
-        ],
+          "Home exercise program"
+        ]
       },
       {
         name: "Fracture Fixation",
-        image:
-          "https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=800&q=80",
-        description:
-          "Our protocol-based approach for fracture rehabilitation respects bone healing while progressively restoring function and strength.",
+        image: "https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=800&q=80",
+        description: "Our protocol-based approach for fracture rehabilitation respects bone healing while progressively restoring function and strength.",
         treatments: [
           "Protected mobility",
           "Progressive weight bearing",
           "Staged strengthening",
           "Functional training",
-          "Return to activity guidance",
-        ],
+          "Return to activity guidance"
+        ]
       },
-    ],
+      {
+        name: "Disectomy/laminectomy",
+        image: "/treatment/postsurgical/disectomy-laminectomy.jpg",
+        description: "Post-operative rehabilitation focusing on spinal mobility and pain management.",
+        treatments: [
+          "Gentle spinal mobilizations",
+          "Core strengthening exercises",
+          "Posture correction",
+          "Pain management techniques",
+          "Gradual return to daily activities"
+        ]
+      },
+      {
+        name: "Ankle ligament reconstruction",
+        image: "/treatment/postsurgical/ankle-ligament-reconstruction.jpg",
+        description: "Rehabilitation protocol focusing on restoring ankle stability and function.",
+        treatments: [
+          "Progressive weight-bearing exercises",
+          "Balance and proprioception training",
+          "Strengthening exercises for ankle evertors",
+          "Functional training",
+          "Return to sport-specific drills"
+        ]
+      },
+      {
+        name: "Joint arthroplasty",
+        image: "/treatment/postsurgical/joint-arthroplasty.jpg",
+        description: "Rehabilitation focusing on restoring joint function and mobility.",
+        treatments: [
+          "Range of motion exercises",
+          "Strengthening exercises",
+          "Functional training",
+          "Gait training",
+          "Home exercise program"
+        ]
+      },
+      {
+        name: "Amputation",
+        image: "/treatment/postsurgical/amputation.jpg",
+        description: "Comprehensive rehabilitation focusing on prosthetic use and functional independence.",
+        treatments: [
+          "Wound care and stump management",
+          "Prosthetic fitting and training",
+          "Strengthening exercises",
+          "Gait training with prosthesis",
+          "Psychosocial support"
+        ]
+      },
+      {
+        name: "Spinal decompression surgery",
+        image: "/treatment/postsurgical/spinal-decompression-surgery.jpg",
+        description: "Focused rehabilitation to relieve nerve pressure, restore mobility, and strengthen the back.",
+        treatments: [
+          "Pain management and neural mobilization",
+          "Gradual spinal extension and flexion exercises",
+          "Core strengthening and postural correction",
+          "Activity pacing and endurance building",
+          "Education on spine protection"
+        ]
+      },
+      {
+        name: "Tendon transfer surgery",
+        image: "/treatment/postsurgical/tendon-transfer-surgery.jpg",
+        description: "Rehabilitation aimed at retraining new muscle-tendon pathways and functional integration.",
+        treatments: [
+          "Motor re-education",
+          "Strengthening of transferred tendons",
+          "Joint mobility exercises",
+          "ADL (activities of daily living) retraining",
+          "Neuromuscular re-education"
+        ]
+      },
+      {
+        name: "Detrotation Osteotomy",
+        image: "/treatment/postsurgical/detrotation-osteotomy.jpg",
+        description: "Corrective rehabilitation following derotation osteotomy to restore alignment and mobility.",
+        treatments: [
+          "Postural and gait correction",
+          "Joint mobility and flexibility",
+          "Progressive strengthening",
+          "Functional training",
+          "Orthotic support guidance"
+        ]
+      },
+      {
+        name: "Botox release",
+        image: "/treatment/postsurgical/botox-release.jpg",
+        description: "Post-injection rehab for spasticity management and functional muscle use.",
+        treatments: [
+          "Stretching of injected muscles",
+          "Strengthening of antagonist groups",
+          "Functional mobility exercises",
+          "Neuromuscular retraining",
+          "Tone management techniques"
+        ]
+      },
+      {
+        name: "Adductor, Hamstring, gastrosoleus release",
+        image: "/treatment/postsurgical/adductor-hamstring-gastrosoleus-release.jpg",
+        description: "Rehabilitation aimed at improving range and reducing contractures after soft tissue release.",
+        treatments: [
+          "Stretching of released muscles",
+          "Strengthening of opposing muscle groups",
+          "Postural alignment training",
+          "Gait retraining",
+          "Orthotic or splint use if needed"
+        ]
+      }
+    ]
   },
+  
   {
     id: "womens-health",
     title: "Women's Health",

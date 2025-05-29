@@ -33,11 +33,11 @@ const ServiceOptions = () => {
   const services = [
     {
       title: "Physiotherapy at Clinic",
-      image: "/service/clinic.webp",
+      image: "/service/clinic.jpg",
     },
     {
       title: "Physiotherapy at Home",
-      image: "/service/home.webp",
+      image: "/service/home.jpg",
     },
     {
       title: "Online Consultation",
