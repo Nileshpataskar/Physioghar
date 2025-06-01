@@ -172,15 +172,20 @@ const TreatmentCategories = () => {
                     className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group"
                     onClick={() => setSelectedCondition(activeCondition)}
                   >
-                    <Image
-                      src={activeCondition.image}
-                      alt={activeCondition.name}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
-                      quality={75}
-                      className="object-cover rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl group-hover:scale-105 sm:group-hover:scale-110 group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-transform duration-500 border-2 border-primary/10"
-                      loading="lazy"
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={activeCondition.image}
+                        alt={activeCondition.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
+                        quality={85}
+                        priority={activeIndex === 0}
+                        className="object-cover rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl group-hover:scale-105 sm:group-hover:scale-110 group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-transform duration-500 border-2 border-primary/10"
+                        loading={activeIndex === 0 ? "eager" : "lazy"}
+                        placeholder="blur"
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                      />
+                    </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 rounded-b-2xl sm:rounded-b-3xl">
                       <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow-lg">
                         {activeCondition.name}
@@ -234,11 +239,19 @@ const TreatmentCategories = () => {
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
               >
                 <div className="relative h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
-                  <img
-                    src={selectedCondition.image}
-                    alt={selectedCondition.name}
-                    className="w-full h-full object-cover rounded-t-xl sm:rounded-t-2xl"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={selectedCondition.image}
+                      alt={selectedCondition.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
+                      quality={90}
+                      priority
+                      className="object-cover rounded-t-xl sm:rounded-t-2xl"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end rounded-t-xl sm:rounded-t-2xl">
                     <div className="p-4 sm:p-6">
                       <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow">
