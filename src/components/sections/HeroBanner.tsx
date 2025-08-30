@@ -49,9 +49,9 @@ export const HeroBanner = () => {
       gsap.fromTo(
         ".hero-content",
         { y: 30, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
+        {
+          y: 0,
+          opacity: 1,
           duration: 1,
           ease: "power2.out",
           clearProps: "all" // Clean up after animation
@@ -120,7 +120,7 @@ export const HeroBanner = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Personalized{" "}
+            Expertise{" "}
             <span className="text-primary/90 relative">
               Physiotherapy
               <svg
@@ -142,10 +142,19 @@ export const HeroBanner = () => {
             Personalized Physiotherapy Care. Wherever You Are
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="px-8 py-6 rounded-full text-base">
+            <Button
+              size="lg"
+              className="px-8 py-6 rounded-full text-base"
+              onClick={() => {
+                const el = document.getElementById('booking');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+            >
               Book Consultation
             </Button>
-           
+
           </div>
         </div>
       </div>

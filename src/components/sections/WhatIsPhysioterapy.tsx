@@ -46,8 +46,8 @@ const WhatIsPhysiotherapy = () => {
       className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
     >
       {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-48 sm:w-56 md:w-64 lg:w-72 h-48 sm:h-56 md:h-64 lg:h-72 bg-primary/5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-56 sm:w-64 md:w-72 lg:w-80 h-56 sm:h-64 md:h-72 lg:h-80 bg-primary/5 rounded-full -translate-x-1/3 translate-y-1/3"></div>
+      <div className="absolute top-0 right-0 w-48 sm:w-56 md:w-64 lg:w-72 h-48 sm:h-56 md:h-64 lg:h-72 bg-[#629d2e]/30 rounded-full translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-56 sm:w-64 md:w-72 lg:w-80 h-56 sm:h-64 md:h-72 lg:h-80 bg-[#629d2e]/30 rounded-full -translate-x-1/3 translate-y-1/3"></div>
 
       <div className="max-w-6xl mx-auto relative">
         <div className="physio-text space-y-6 sm:space-y-20">
@@ -58,9 +58,10 @@ const WhatIsPhysiotherapy = () => {
             manual therapy, targeted exercises, education, and modern equipment.
           </p>
 
-          <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg border border-primary/10 max-w-4xl mx-auto">
-            <p className="text-lg sm:text-xl md:text-2xl text-primary text-center font-medium leading-relaxed">
-              It's not just about treating pain—it's about finding the root
+          {/* <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg border border-primary/10 max-w-4xl mx-auto"> */}
+          <div className="bg-[#123559] p-6 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl shadow-lg border border-primary/10 max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl  text-center text-white font-medium leading-relaxed">
+              It's not just about treating pain it's about finding the root
               cause of the problem and helping patients recover in a safe,
               sustainable way.
             </p>

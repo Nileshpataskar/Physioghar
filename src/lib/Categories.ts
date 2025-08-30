@@ -113,6 +113,212 @@ export const categories: CategoryTab[] = [
     ],
   },
   {
+    id: "post-surgical",
+    title: "Post-Surgical Conditions",
+    conditions: [
+      {
+        name: "Hip Replacement Surgery",
+        image: "/treatment/postsurgical/hip.jpg",
+        description:
+          "Our protocol-based approach for total hip replacement rehabilitation focuses on safe recovery, functional restoration, and return to activities.",
+        treatments: [
+          "Protocol-based progression",
+          "Gait training",
+          "Precaution education",
+          "Functional training",
+          "Home exercise program",
+        ],
+      },
+      {
+        name: "Knee Replacement Surgery",
+        image: "/treatment/postsurgical/knee.jpg",
+
+        description:
+          "Our comprehensive approach for total knee replacement rehabilitation focuses on range of motion, strength, and functional independence.",
+        treatments: [
+          "Range of motion exercises",
+          "Progressive strengthening",
+          "Gait training",
+          "Functional activities",
+          "Home exercise program",
+        ],
+      },
+      {
+        name: "ACL Reconstruction",
+        image: "/treatment/postsurgical/acl.jpg",
+
+        description:
+          "Our evidence-based protocol for ACL reconstruction rehabilitation follows established timelines to ensure optimal recovery and return to sport.",
+        treatments: [
+          "Phase-appropriate exercises",
+          "Neuromuscular training",
+          "Strength and power development",
+          "Sport-specific rehabilitation",
+          "Return to sport testing",
+        ],
+      },
+      {
+        name: "Rotator Cuff Repair",
+        image: "/treatment/postsurgical/cuff.jpg",
+
+        description:
+          "Our protocol-based approach for rotator cuff repair rehabilitation respects tissue healing while progressively restoring function.",
+        treatments: [
+          "Protected range of motion",
+          "Progressive strengthening",
+          "Scapular stabilization",
+          "Functional training",
+          "Return to activity guidance",
+        ],
+      },
+      {
+        name: "Spinal Fusion Surgery",
+        image: "/treatment/postsurgical/spine.jpg",
+
+        description:
+          "Our specialized approach for spinal fusion rehabilitation focuses on safe mobility, core stability, and functional independence.",
+        treatments: [
+          "Safe mobility training",
+          "Core stabilization",
+          "Body mechanics education",
+          "Functional activities",
+          "Home exercise program",
+        ],
+      },
+      {
+        name: "Fracture Fixation",
+        image: "/treatment/postsurgical/fracture.jpg",
+
+        description:
+          "Our protocol-based approach for fracture rehabilitation respects bone healing while progressively restoring function and strength.",
+        treatments: [
+          "Protected mobility",
+          "Progressive weight bearing",
+          "Staged strengthening",
+          "Functional training",
+          "Return to activity guidance",
+        ],
+      },
+      {
+        name: "Disectomy/laminectomy",
+        image: "/treatment/postsurgical/dis.jpg",
+        description:
+          "Post-operative rehabilitation focusing on spinal mobility and pain management.",
+        treatments: [
+          "Gentle spinal mobilizations",
+          "Core strengthening exercises",
+          "Posture correction",
+          "Pain management techniques",
+          "Gradual return to daily activities",
+        ],
+      },
+      {
+        name: "Ankle ligament reconstruction",
+        image: "/treatment/postsurgical/ankle.jpg",
+        description:
+          "Rehabilitation protocol focusing on restoring ankle stability and function.",
+        treatments: [
+          "Progressive weight-bearing exercises",
+          "Balance and proprioception training",
+          "Strengthening exercises for ankle evertors",
+          "Functional training",
+          "Return to sport-specific drills",
+        ],
+      },
+      {
+        name: "Joint arthroplasty",
+        image: "/treatment/postsurgical/joint.jpg",
+        description:
+          "Rehabilitation focusing on restoring joint function and mobility.",
+        treatments: [
+          "Range of motion exercises",
+          "Strengthening exercises",
+          "Functional training",
+          "Gait training",
+          "Home exercise program",
+        ],
+      },
+      {
+        name: "Amputation",
+        image: "/treatment/postsurgical/amp.jpg",
+        description:
+          "Comprehensive rehabilitation focusing on prosthetic use and functional independence.",
+        treatments: [
+          "Wound care and stump management",
+          "Prosthetic fitting and training",
+          "Strengthening exercises",
+          "Gait training with prosthesis",
+          "Psychosocial support",
+        ],
+      },
+      {
+        name: "Spinal decompression surgery",
+        image: "/treatment/postsurgical/decomp.jpg",
+        description:
+          "Focused rehabilitation to relieve nerve pressure, restore mobility, and strengthen the back.",
+        treatments: [
+          "Pain management and neural mobilization",
+          "Gradual spinal extension and flexion exercises",
+          "Core strengthening and postural correction",
+          "Activity pacing and endurance building",
+          "Education on spine protection",
+        ],
+      },
+      {
+        name: "Tendon transfer surgery",
+        image: "/treatment/postsurgical/ten.jpg",
+        description:
+          "Rehabilitation aimed at retraining new muscle-tendon pathways and functional integration.",
+        treatments: [
+          "Motor re-education",
+          "Strengthening of transferred tendons",
+          "Joint mobility exercises",
+          "ADL (activities of daily living) retraining",
+          "Neuromuscular re-education",
+        ],
+      },
+      {
+        name: "Detrotation Osteotomy",
+        image: "/treatment/postsurgical/fracture.jpg",
+        description:
+          "Corrective rehabilitation following derotation osteotomy to restore alignment and mobility.",
+        treatments: [
+          "Postural and gait correction",
+          "Joint mobility and flexibility",
+          "Progressive strengthening",
+          "Functional training",
+          "Orthotic support guidance",
+        ],
+      },
+      {
+        name: "Botox release",
+        image: "/treatment/postsurgical/botox.jpg",
+        description:
+          "Post-injection rehab for spasticity management and functional muscle use.",
+        treatments: [
+          "Stretching of injected muscles",
+          "Strengthening of antagonist groups",
+          "Functional mobility exercises",
+          "Neuromuscular retraining",
+          "Tone management techniques",
+        ],
+      },
+      {
+        name: "Adductor, Hamstring, gastrosoleus release",
+        image: "/treatment/postsurgical/gas.jpg",
+        description:
+          "Rehabilitation aimed at improving range and reducing contractures after soft tissue release.",
+        treatments: [
+          "Stretching of released muscles",
+          "Strengthening of opposing muscle groups",
+          "Postural alignment training",
+          "Gait retraining",
+          "Orthotic or splint use if needed",
+        ],
+      },
+    ],
+  },
+  {
     id: "neurological",
     title: "Neurological Conditions",
     conditions: [
@@ -415,6 +621,265 @@ export const categories: CategoryTab[] = [
     ],
   },
   {
+    id: "ergonomic",
+    title: "Ergonomic Conditions",
+    conditions: [
+      {
+        name: "Upper Cross Syndrome",
+        image: "/treatment/ergonomic/cross.jpg",
+        description:
+          "Our approach addresses postural imbalances, muscle length-tension relationships, and ergonomic factors contributing to upper cross syndrome.",
+        treatments: [
+          "Postural correction",
+          "Targeted stretching",
+          "Strengthening of weak muscles",
+          "Ergonomic assessment",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Lower Cross Syndrome",
+        image: "/treatment/ergonomic/lowercross.jpg",
+        description:
+          "Our comprehensive approach addresses the muscle imbalances, movement patterns, and functional limitations associated with lower cross syndrome.",
+        treatments: [
+          "Core stabilization",
+          "Hip flexor stretching",
+          "Gluteal strengthening",
+          "Movement pattern retraining",
+          "Ergonomic advice",
+        ],
+      },
+      {
+        name: "Forward Head Posture",
+        image: "/treatment/ergonomic/head_posture.jpg",
+        description:
+          "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to forward head posture.",
+        treatments: [
+          "Deep neck flexor training",
+          "Thoracic mobility exercises",
+          "Postural awareness training",
+          "Workstation assessment",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Cervicogenic Headache",
+        image: "/treatment/ergonomic/cv_Headache.jpg",
+        description:
+          "Our specialized approach addresses the cervical spine dysfunction contributing to headaches through manual therapy and targeted exercises.",
+        treatments: [
+          "Manual therapy techniques",
+          "Deep neck flexor training",
+          "Postural correction",
+          "Ergonomic assessment",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Postural Kyphosis",
+        image: "/treatment/ergonomic/ps_k.jpg",
+        description:
+          "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to excessive thoracic kyphosis.",
+        treatments: [
+          "Thoracic mobility exercises",
+          "Postural muscle strengthening",
+          "Ergonomic assessment",
+          "Postural awareness training",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Mechanical Low Back Pain",
+        image: "/treatment/ergonomic/pain.jpg",
+        description:
+          "Our approach addresses the movement patterns, muscle imbalances, and ergonomic factors contributing to mechanical low back pain.",
+        treatments: [
+          "Movement pattern assessment",
+          "Core stabilization",
+          "Manual therapy",
+          "Ergonomic assessment",
+          "Self-management strategies",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "cardio-respiratory",
+    title: "Cardio-Respiratory Conditions",
+    conditions: [
+      {
+        name: "COPD",
+        image: "/treatment/cardio/copd.jpg",
+        description:
+          "Our pulmonary rehabilitation approach for COPD focuses on improving exercise capacity, managing symptoms, and enhancing quality of life.",
+        treatments: [
+          "Breathing techniques",
+          "Exercise conditioning",
+          "Energy conservation",
+          "Airway clearance",
+          "Self-management education",
+        ],
+      },
+      {
+        name: "Respiratory Muscle Weakness",
+        image: "/treatment/cardio/resp.jpg",
+        description:
+          "Our specialized approach addresses respiratory muscle weakness through specific training techniques to improve breathing efficiency.",
+        treatments: [
+          "Inspiratory muscle training",
+          "Breathing exercises",
+          "Postural correction",
+          "Activity pacing",
+          "Energy conservation",
+        ],
+      },
+      {
+        name: "Bronchitis",
+        image: "/treatment/cardio/bronc.jpg",
+        description:
+          "Our approach for bronchitis focuses on airway clearance, breathing efficiency, and maintaining physical activity levels.",
+        treatments: [
+          "Airway clearance techniques",
+          "Breathing exercises",
+          "Physical activity guidance",
+          "Postural drainage",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Bronchial Asthma",
+        image: "/treatment/cardio/asthama.jpg",
+        description:
+          "Our specialized approach for asthma focuses on breathing techniques, exercise tolerance, and self-management strategies.",
+        treatments: [
+          "Breathing retraining",
+          "Exercise prescription",
+          "Trigger management",
+          "Relaxation techniques",
+          "Self-management education",
+        ],
+      },
+      {
+        name: "Post CABG",
+        image: "/treatment/cardio/cabg.jpg",
+        description:
+          "Our cardiac rehabilitation approach after CABG surgery follows evidence-based protocols to ensure safe recovery and improved cardiovascular health.",
+        treatments: [
+          "Graduated exercise program",
+          "Sternal precautions",
+          "Risk factor management",
+          "Functional activities",
+          "Home exercise program",
+        ],
+      },
+      {
+        name: "Post Cardiac Surgery Recovery",
+        image: "/treatment/cardio/card.jpg",
+        description:
+          "Our comprehensive cardiac rehabilitation program addresses physical recovery, risk factor modification, and return to activities after cardiac surgery.",
+        treatments: [
+          "Monitored exercise progression",
+          "Education on risk factors",
+          "Energy conservation",
+          "Functional training",
+          "Home exercise program",
+        ],
+      },
+    ],
+  },
+
+  {
+    id: "womens-health",
+    title: "Women's Health",
+    conditions: [
+      {
+        name: "Diastasis Recti",
+        image: "/treatment/women/recti.jpg",
+
+        description:
+          "Our specialized approach for diastasis recti focuses on core function, progressive loading, and functional integration.",
+        treatments: [
+          "Core activation training",
+          "Progressive loading",
+          "Functional movement patterns",
+          "Postural education",
+          "Breathing strategies",
+        ],
+      },
+      {
+        name: "Postural Related Back Pain",
+        image: "/treatment/women/back.jpg",
+        description:
+          "Our approach addresses the unique postural changes and demands during and after pregnancy to manage and prevent back pain.",
+        treatments: [
+          "Postural education",
+          "Core stabilization",
+          "Manual therapy",
+          "Supportive devices guidance",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Sacroiliac/Pelvic Girdle Pain",
+        image: "/treatment/women/girdle.jpg",
+
+        description:
+          "Our specialized approach addresses the biomechanical changes and pain associated with sacroiliac joint and pelvic girdle dysfunction.",
+        treatments: [
+          "Pelvic stabilization exercises",
+          "Manual therapy",
+          "Supportive devices",
+          "Activity modification",
+          "Self-management strategies",
+        ],
+      },
+      {
+        name: "Joint Laxity",
+        image: "/treatment/women/lax.jpg",
+
+        description:
+          "Our approach addresses the increased joint laxity during pregnancy through appropriate stabilization exercises and movement strategies.",
+        treatments: [
+          "Joint protection strategies",
+          "Appropriate strengthening",
+          "Proprioceptive training",
+          "Supportive devices guidance",
+          "Activity modification",
+        ],
+      },
+      {
+        name: "Nerve Compression Syndrome",
+        image: "/treatment/women/nerve.jpg",
+
+        description:
+          "Our specialized approach addresses nerve compression syndromes that may occur during pregnancy through appropriate positioning and exercises.",
+        treatments: [
+          "Neural mobilization",
+          "Positioning strategies",
+          "Supportive devices",
+          "Activity modification",
+          "Self-management techniques",
+        ],
+      },
+      {
+        name: "Urinary Incontinence",
+        image: "/treatment/women/urine.jpg",
+        description:
+          "Our specialized pelvic health approach addresses various types of urinary incontinence through evidence-based interventions.",
+        treatments: [
+          "Pelvic floor muscle training",
+          "Bladder retraining",
+          "Lifestyle modifications",
+          "Functional integration",
+          "Self-management strategies",
+        ],
+      },
+    ],
+  },
+
+  {
     id: "sports",
     title: "Sports Conditions",
     conditions: [
@@ -611,468 +1076,6 @@ export const categories: CategoryTab[] = [
           "Stretching and strengthening",
           "Ergonomic corrections",
           "Manual therapy",
-        ],
-      },
-    ],
-  },
-  {
-    id: "ergonomic",
-    title: "Ergonomic Conditions",
-    conditions: [
-      {
-        name: "Upper Cross Syndrome",
-        image: "/treatment/ergonomic/cross.jpg",
-        description:
-          "Our approach addresses postural imbalances, muscle length-tension relationships, and ergonomic factors contributing to upper cross syndrome.",
-        treatments: [
-          "Postural correction",
-          "Targeted stretching",
-          "Strengthening of weak muscles",
-          "Ergonomic assessment",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Lower Cross Syndrome",
-        image: "/treatment/ergonomic/lowercross.jpg",
-        description:
-          "Our comprehensive approach addresses the muscle imbalances, movement patterns, and functional limitations associated with lower cross syndrome.",
-        treatments: [
-          "Core stabilization",
-          "Hip flexor stretching",
-          "Gluteal strengthening",
-          "Movement pattern retraining",
-          "Ergonomic advice",
-        ],
-      },
-      {
-        name: "Forward Head Posture",
-        image: "/treatment/ergonomic/head_posture.jpg",
-        description:
-          "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to forward head posture.",
-        treatments: [
-          "Deep neck flexor training",
-          "Thoracic mobility exercises",
-          "Postural awareness training",
-          "Workstation assessment",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Cervicogenic Headache",
-        image: "/treatment/ergonomic/cv_Headache.jpg",
-        description:
-          "Our specialized approach addresses the cervical spine dysfunction contributing to headaches through manual therapy and targeted exercises.",
-        treatments: [
-          "Manual therapy techniques",
-          "Deep neck flexor training",
-          "Postural correction",
-          "Ergonomic assessment",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Postural Kyphosis",
-        image: "/treatment/ergonomic/ps_k.jpg",
-        description:
-          "Our approach addresses the muscular imbalances, joint restrictions, and habits contributing to excessive thoracic kyphosis.",
-        treatments: [
-          "Thoracic mobility exercises",
-          "Postural muscle strengthening",
-          "Ergonomic assessment",
-          "Postural awareness training",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Mechanical Low Back Pain",
-        image: "/treatment/ergonomic/pain.jpg",
-        description:
-          "Our approach addresses the movement patterns, muscle imbalances, and ergonomic factors contributing to mechanical low back pain.",
-        treatments: [
-          "Movement pattern assessment",
-          "Core stabilization",
-          "Manual therapy",
-          "Ergonomic assessment",
-          "Self-management strategies",
-        ],
-      },
-    ],
-  },
-  {
-    id: "post-surgical",
-    title: "Post-Surgical Conditions",
-    conditions: [
-      {
-        name: "Hip Replacement Surgery",
-        image: "/treatment/postsurgical/hip.jpg",
-        description:
-          "Our protocol-based approach for total hip replacement rehabilitation focuses on safe recovery, functional restoration, and return to activities.",
-        treatments: [
-          "Protocol-based progression",
-          "Gait training",
-          "Precaution education",
-          "Functional training",
-          "Home exercise program",
-        ],
-      },
-      {
-        name: "Knee Replacement Surgery",
-        image: "/treatment/postsurgical/knee.jpg",
-
-        description:
-          "Our comprehensive approach for total knee replacement rehabilitation focuses on range of motion, strength, and functional independence.",
-        treatments: [
-          "Range of motion exercises",
-          "Progressive strengthening",
-          "Gait training",
-          "Functional activities",
-          "Home exercise program",
-        ],
-      },
-      {
-        name: "ACL Reconstruction",
-        image: "/treatment/postsurgical/acl.jpg",
-
-        description:
-          "Our evidence-based protocol for ACL reconstruction rehabilitation follows established timelines to ensure optimal recovery and return to sport.",
-        treatments: [
-          "Phase-appropriate exercises",
-          "Neuromuscular training",
-          "Strength and power development",
-          "Sport-specific rehabilitation",
-          "Return to sport testing",
-        ],
-      },
-      {
-        name: "Rotator Cuff Repair",
-        image: "/treatment/postsurgical/cuff.jpg",
-
-        description:
-          "Our protocol-based approach for rotator cuff repair rehabilitation respects tissue healing while progressively restoring function.",
-        treatments: [
-          "Protected range of motion",
-          "Progressive strengthening",
-          "Scapular stabilization",
-          "Functional training",
-          "Return to activity guidance",
-        ],
-      },
-      {
-        name: "Spinal Fusion Surgery",
-        image: "/treatment/postsurgical/spine.jpg",
-
-        description:
-          "Our specialized approach for spinal fusion rehabilitation focuses on safe mobility, core stability, and functional independence.",
-        treatments: [
-          "Safe mobility training",
-          "Core stabilization",
-          "Body mechanics education",
-          "Functional activities",
-          "Home exercise program",
-        ],
-      },
-      {
-        name: "Fracture Fixation",
-        image: "/treatment/postsurgical/fracture.jpg",
-
-        description:
-          "Our protocol-based approach for fracture rehabilitation respects bone healing while progressively restoring function and strength.",
-        treatments: [
-          "Protected mobility",
-          "Progressive weight bearing",
-          "Staged strengthening",
-          "Functional training",
-          "Return to activity guidance",
-        ],
-      },
-      {
-        name: "Disectomy/laminectomy",
-        image: "/treatment/postsurgical/dis.jpg",
-        description:
-          "Post-operative rehabilitation focusing on spinal mobility and pain management.",
-        treatments: [
-          "Gentle spinal mobilizations",
-          "Core strengthening exercises",
-          "Posture correction",
-          "Pain management techniques",
-          "Gradual return to daily activities",
-        ],
-      },
-      {
-        name: "Ankle ligament reconstruction",
-        image: "/treatment/postsurgical/ankle.jpg",
-        description:
-          "Rehabilitation protocol focusing on restoring ankle stability and function.",
-        treatments: [
-          "Progressive weight-bearing exercises",
-          "Balance and proprioception training",
-          "Strengthening exercises for ankle evertors",
-          "Functional training",
-          "Return to sport-specific drills",
-        ],
-      },
-      {
-        name: "Joint arthroplasty",
-        image: "/treatment/postsurgical/joint.jpg",
-        description:
-          "Rehabilitation focusing on restoring joint function and mobility.",
-        treatments: [
-          "Range of motion exercises",
-          "Strengthening exercises",
-          "Functional training",
-          "Gait training",
-          "Home exercise program",
-        ],
-      },
-      {
-        name: "Amputation",
-        image: "/treatment/postsurgical/amp.jpg",
-        description:
-          "Comprehensive rehabilitation focusing on prosthetic use and functional independence.",
-        treatments: [
-          "Wound care and stump management",
-          "Prosthetic fitting and training",
-          "Strengthening exercises",
-          "Gait training with prosthesis",
-          "Psychosocial support",
-        ],
-      },
-      {
-        name: "Spinal decompression surgery",
-        image: "/treatment/postsurgical/decomp.jpg",
-        description:
-          "Focused rehabilitation to relieve nerve pressure, restore mobility, and strengthen the back.",
-        treatments: [
-          "Pain management and neural mobilization",
-          "Gradual spinal extension and flexion exercises",
-          "Core strengthening and postural correction",
-          "Activity pacing and endurance building",
-          "Education on spine protection",
-        ],
-      },
-      {
-        name: "Tendon transfer surgery",
-        image: "/treatment/postsurgical/ten.jpg",
-        description:
-          "Rehabilitation aimed at retraining new muscle-tendon pathways and functional integration.",
-        treatments: [
-          "Motor re-education",
-          "Strengthening of transferred tendons",
-          "Joint mobility exercises",
-          "ADL (activities of daily living) retraining",
-          "Neuromuscular re-education",
-        ],
-      },
-      {
-        name: "Detrotation Osteotomy",
-        image: "/treatment/postsurgical/fracture.jpg",
-        description:
-          "Corrective rehabilitation following derotation osteotomy to restore alignment and mobility.",
-        treatments: [
-          "Postural and gait correction",
-          "Joint mobility and flexibility",
-          "Progressive strengthening",
-          "Functional training",
-          "Orthotic support guidance",
-        ],
-      },
-      {
-        name: "Botox release",
-        image: "/treatment/postsurgical/botox.jpg",
-        description:
-          "Post-injection rehab for spasticity management and functional muscle use.",
-        treatments: [
-          "Stretching of injected muscles",
-          "Strengthening of antagonist groups",
-          "Functional mobility exercises",
-          "Neuromuscular retraining",
-          "Tone management techniques",
-        ],
-      },
-      {
-        name: "Adductor, Hamstring, gastrosoleus release",
-        image: "/treatment/postsurgical/gas.jpg",
-        description:
-          "Rehabilitation aimed at improving range and reducing contractures after soft tissue release.",
-        treatments: [
-          "Stretching of released muscles",
-          "Strengthening of opposing muscle groups",
-          "Postural alignment training",
-          "Gait retraining",
-          "Orthotic or splint use if needed",
-        ],
-      },
-    ],
-  },
-  {
-    id: "womens-health",
-    title: "Women's Health",
-    conditions: [
-      {
-        name: "Diastasis Recti",
-        image: "/treatment/women/recti.jpg",
-
-        description:
-          "Our specialized approach for diastasis recti focuses on core function, progressive loading, and functional integration.",
-        treatments: [
-          "Core activation training",
-          "Progressive loading",
-          "Functional movement patterns",
-          "Postural education",
-          "Breathing strategies",
-        ],
-      },
-      {
-        name: "Postural Related Back Pain",
-        image: "/treatment/women/back.jpg",
-        description:
-          "Our approach addresses the unique postural changes and demands during and after pregnancy to manage and prevent back pain.",
-        treatments: [
-          "Postural education",
-          "Core stabilization",
-          "Manual therapy",
-          "Supportive devices guidance",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Sacroiliac/Pelvic Girdle Pain",
-        image: "/treatment/women/girdle.jpg",
-
-        description:
-          "Our specialized approach addresses the biomechanical changes and pain associated with sacroiliac joint and pelvic girdle dysfunction.",
-        treatments: [
-          "Pelvic stabilization exercises",
-          "Manual therapy",
-          "Supportive devices",
-          "Activity modification",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Joint Laxity",
-        image: "/treatment/women/lax.jpg",
-
-        description:
-          "Our approach addresses the increased joint laxity during pregnancy through appropriate stabilization exercises and movement strategies.",
-        treatments: [
-          "Joint protection strategies",
-          "Appropriate strengthening",
-          "Proprioceptive training",
-          "Supportive devices guidance",
-          "Activity modification",
-        ],
-      },
-      {
-        name: "Nerve Compression Syndrome",
-        image: "/treatment/women/nerve.jpg",
-
-        description:
-          "Our specialized approach addresses nerve compression syndromes that may occur during pregnancy through appropriate positioning and exercises.",
-        treatments: [
-          "Neural mobilization",
-          "Positioning strategies",
-          "Supportive devices",
-          "Activity modification",
-          "Self-management techniques",
-        ],
-      },
-      {
-        name: "Urinary Incontinence",
-        image: "/treatment/women/urine.jpg",
-        description:
-          "Our specialized pelvic health approach addresses various types of urinary incontinence through evidence-based interventions.",
-        treatments: [
-          "Pelvic floor muscle training",
-          "Bladder retraining",
-          "Lifestyle modifications",
-          "Functional integration",
-          "Self-management strategies",
-        ],
-      },
-    ],
-  },
-  {
-    id: "cardio-respiratory",
-    title: "Cardio-Respiratory Conditions",
-    conditions: [
-      {
-        name: "COPD",
-        image: "/treatment/cardio/copd.jpg",
-        description:
-          "Our pulmonary rehabilitation approach for COPD focuses on improving exercise capacity, managing symptoms, and enhancing quality of life.",
-        treatments: [
-          "Breathing techniques",
-          "Exercise conditioning",
-          "Energy conservation",
-          "Airway clearance",
-          "Self-management education",
-        ],
-      },
-      {
-        name: "Respiratory Muscle Weakness",
-        image: "/treatment/cardio/resp.jpg",
-        description:
-          "Our specialized approach addresses respiratory muscle weakness through specific training techniques to improve breathing efficiency.",
-        treatments: [
-          "Inspiratory muscle training",
-          "Breathing exercises",
-          "Postural correction",
-          "Activity pacing",
-          "Energy conservation",
-        ],
-      },
-      {
-        name: "Bronchitis",
-        image: "/treatment/cardio/bronc.jpg",
-        description:
-          "Our approach for bronchitis focuses on airway clearance, breathing efficiency, and maintaining physical activity levels.",
-        treatments: [
-          "Airway clearance techniques",
-          "Breathing exercises",
-          "Physical activity guidance",
-          "Postural drainage",
-          "Self-management strategies",
-        ],
-      },
-      {
-        name: "Bronchial Asthma",
-        image: "/treatment/cardio/asthama.jpg",
-        description:
-          "Our specialized approach for asthma focuses on breathing techniques, exercise tolerance, and self-management strategies.",
-        treatments: [
-          "Breathing retraining",
-          "Exercise prescription",
-          "Trigger management",
-          "Relaxation techniques",
-          "Self-management education",
-        ],
-      },
-      {
-        name: "Post CABG",
-        image: "/treatment/cardio/cabg.jpg",
-        description:
-          "Our cardiac rehabilitation approach after CABG surgery follows evidence-based protocols to ensure safe recovery and improved cardiovascular health.",
-        treatments: [
-          "Graduated exercise program",
-          "Sternal precautions",
-          "Risk factor management",
-          "Functional activities",
-          "Home exercise program",
-        ],
-      },
-      {
-        name: "Post Cardiac Surgery Recovery",
-        image: "/treatment/cardio/card.jpg",
-        description:
-          "Our comprehensive cardiac rehabilitation program addresses physical recovery, risk factor modification, and return to activities after cardiac surgery.",
-        treatments: [
-          "Monitored exercise progression",
-          "Education on risk factors",
-          "Energy conservation",
-          "Functional training",
-          "Home exercise program",
         ],
       },
     ],

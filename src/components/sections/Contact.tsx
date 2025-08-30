@@ -40,8 +40,7 @@ export const Contact = () => {
     }, [])
 
     return (
-        <section
-            id="contact"
+        <section id="contact"
             ref={contactRef}
             className="py-20 px-6 md:px-10 bg-gradient-to-b from-slate-800 to-slate-900 text-white relative overflow-hidden"
         >
@@ -58,7 +57,7 @@ export const Contact = () => {
                                     <div>
                                         <h3 className="font-medium">Address</h3>
                                         <p className="text-slate-300">
-                                            123 Healing Street, Wellness District, Mumbai 400001
+                                            1st floor, Jasraj Goodwill, HDFC bank lane, opp. Giriraj heights, Ambre colony, Parande Nagar, Dighi, Pune, Pimpri-Chinchwad, Maharashtra 411015
                                         </p>
                                     </div>
                                 </div>
@@ -66,14 +65,14 @@ export const Contact = () => {
                                     <Phone className="h-5 w-5 mr-3 mt-0.5" />
                                     <div>
                                         <h3 className="font-medium">Phone</h3>
-                                        <p className="text-slate-300">+91 98765 43210</p>
+                                        <p className="text-slate-300">+91 8329567219</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start">
                                     <Mail className="h-5 w-5 mr-3 mt-0.5" />
                                     <div>
                                         <h3 className="font-medium">Email</h3>
-                                        <p className="text-slate-300">care@physioghar.com</p>
+                                        <p className="text-slate-300">physioghar01@gmail.com</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start">
@@ -148,7 +147,7 @@ export const Contact = () => {
                     </div>
                     <div className="map-container h-80 rounded-lg overflow-hidden">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30258.495279306466!2d73.78137100000001!3d18.559971549999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2becff05dd3cb%3A0xa1911297fb7fab7d!2sBaner%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1747068165994!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.9870799068926!2d73.87290381077284!3d18.619650882420167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c7000807fd0f%3A0x7868dab89e705819!2sJasraj%20Goodwill!5e0!3m2!1sen!2sin!4v1756545462386!5m2!1sen!2sin"
                             className="w-full h-full"
                             style={{ border: 0 }}
                             allowFullScreen={true}

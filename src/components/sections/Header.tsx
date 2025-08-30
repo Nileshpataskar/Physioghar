@@ -5,12 +5,18 @@ import { Button } from "../ui/button";
 import { CalendarIcon, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { categories } from "@/lib/Categories";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [treatDropdownOpen, setTreatDropdownOpen] = useState(false);
+  const treatDropdownTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,19 +92,76 @@ const Header = () => {
             />
           </Link>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="lg"
-              className="rounded-full px-6 border-primary/20 hover:bg-primary/5 hover:border-primary/30 transition-all duration-300"
+          {/* Desktop Nav Dropdown */}
+          <div className="hidden lg:flex items-center gap-6">
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                if (treatDropdownTimeout.current) clearTimeout(treatDropdownTimeout.current);
+                setTreatDropdownOpen(true);
+              }}
+              onMouseLeave={() => {
+                treatDropdownTimeout.current = setTimeout(() => setTreatDropdownOpen(false), 200);
+              }}
             >
-              <Phone className="h-5 w-5 mr-2" />
-              <span className="font-medium">Request Callback</span>
-            </Button>
+              <button
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold text-primary bg-primary/10 hover:bg-primary/20 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/20 ${treatDropdownOpen ? 'ring-2 ring-primary/20 bg-primary/20' : ''}`}
+                aria-haspopup="true"
+                aria-expanded={treatDropdownOpen}
+              >
+                What We Treat
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${treatDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              <div
+                className={`absolute left-0 mt-2 w-72 bg-white border border-primary/10 rounded-2xl shadow-2xl z-50 transition-all duration-200 ${treatDropdownOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
+                onMouseEnter={() => {
+                  if (treatDropdownTimeout.current) clearTimeout(treatDropdownTimeout.current);
+                  setTreatDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  treatDropdownTimeout.current = setTimeout(() => setTreatDropdownOpen(false), 200);
+                }}
+                style={{ minWidth: '16rem' }}
+              >
+                <ul className="py-2">
+                  {categories.map((cat) => (
+                    <li key={cat.id}>
+                      <a
+                        href={`#${cat.id}`}
+                        className="block px-6 py-2 text-gray-700 hover:bg-primary/10 hover:text-primary rounded-lg font-medium transition-colors duration-150"
+                        onClick={() => {
+                          setTreatDropdownOpen(false);
+                          const el = document.getElementById(cat.id);
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        {cat.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {/* Existing CTA Buttons */}
             <Button
               size="lg"
               className="rounded-full px-6 bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+              onClick={() => {
+                const el = document.getElementById('booking');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             >
               <CalendarIcon className="h-5 w-5 mr-2" />
               <span className="font-medium">Book Appointment</span>
@@ -142,6 +205,32 @@ const Header = () => {
         aria-label="Mobile menu"
       >
         <div className="p-6 space-y-4">
+          {/* Mobile Dropdown */}
+          <div>
+            <div className="font-semibold text-primary mb-2">What We Treat</div>
+            <ul className="space-y-1">
+              {categories.map((cat) => (
+                <li key={cat.id}>
+                  <a
+                    href={`#${cat.id}`}
+                    className="block px-4 py-2 rounded-lg text-gray-700 hover:bg-primary/10 hover:text-primary transition-colors duration-150"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setTimeout(() => {
+                        const el = document.getElementById(cat.id);
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                      }, 200);
+                    }}
+                  >
+                    {cat.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Existing Mobile Buttons */}
           <Button
             variant="outline"
             size="lg"
@@ -154,7 +243,15 @@ const Header = () => {
           <Button
             size="lg"
             className="w-full rounded-full px-6 bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              setTimeout(() => {
+                const el = document.getElementById('contact');
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }, 200);
+            }}
           >
             <CalendarIcon className="h-5 w-5 mr-2" />
             <span className="font-medium">Book Appointment</span>

@@ -20,11 +20,10 @@ const Page = () => {
       <HeroBanner />
       <WhatIsPhysioterapy />
       <Vision />
-      <OurCoreValues />
-      <ServiceOptions />
-      {/* <ModeOfCare /> */}
       <TreatmentCategories />
       <FirstVisit />
+      <OurCoreValues />
+      <ServiceOptions />
       <Appointement />
       <Contact />
       <Footer />

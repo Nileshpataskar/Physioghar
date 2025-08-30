@@ -19,6 +19,15 @@ export interface CategoryTab {
 
 const AUTO_SLIDE_INTERVAL = 2500;
 
+// Utility to chunk array into pairs
+function chunkArray<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+
 const TreatmentCategories = () => {
   const [activeSlides, setActiveSlides] = useState<{ [key: string]: number }>(
     () => Object.fromEntries(categories.map((cat) => [cat.id, 0]))
@@ -122,102 +131,113 @@ const TreatmentCategories = () => {
         </motion.div>
 
         {/* Render each category as a section with a slider */}
-        {categories.map((category) => {
-          const activeIndex = activeSlides[category.id] || 0;
-          const activeCondition = category.conditions[activeIndex];
-          return (
-            <section
-              key={category.id}
-              className="mb-12 sm:mb-16 lg:mb-20 py-8 sm:py-10 lg:py-12 px-3 sm:px-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-gray-50 to-gray-100"
-            >
-              <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8 text-center tracking-tight">
-                {category.title}
-              </h3>
-              <div className="flex flex-col items-center">
-                <div
-                  className="relative w-full max-w-2xl h-60 sm:h-72 lg:h-80 mb-4 sm:mb-6 group rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border-2 border-primary/10 bg-white overflow-hidden transition-all duration-300"
-                  onMouseEnter={() =>
-                    setPaused((prev) => ({ ...prev, [category.id]: true }))
-                  }
-                  onMouseLeave={() =>
-                    setPaused((prev) => ({ ...prev, [category.id]: false }))
-                  }
+        {chunkArray(categories, 2).map((categoryPair, rowIdx) => (
+          <div
+            key={rowIdx}
+            className={`flex flex-col sm:flex-row gap-8 sm:gap-10 lg:gap-14 mb-12 sm:mb-16 lg:mb-20 ${
+              categoryPair.length === 1 ? 'justify-center' : ''
+            }`}
+          >
+            {categoryPair.map((category) => {
+              const activeIndex = activeSlides[category.id] || 0;
+              const activeCondition = category.conditions[activeIndex];
+              return (
+                <section
+                  key={category.id}
+                  id={category.id}
+                  className="flex-1 py-8 sm:py-10 lg:py-12 px-3 sm:px-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-gray-50 to-gray-100"
+                  style={{ minWidth: 0 }}
                 >
-                  {/* Left arrow */}
-                  <button
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    onClick={() =>
-                      goLeft(category.id, category.conditions.length)
-                    }
-                    aria-label="Previous slide"
-                  >
-                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                  {/* Right arrow */}
-                  <button
-                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                    onClick={() =>
-                      goRight(category.id, category.conditions.length)
-                    }
-                    aria-label="Next slide"
-                  >
-                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </button>
-                  <motion.div
-                    key={activeCondition.name}
-                    initial={{ opacity: 0, x: 40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -40 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group"
-                    onClick={() => setSelectedCondition(activeCondition)}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={activeCondition.image}
-                        alt={activeCondition.name}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
-                        quality={85}
-                        priority={activeIndex === 0}
-                        className="object-cover rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl group-hover:scale-105 sm:group-hover:scale-110 group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-transform duration-500 border-2 border-primary/10"
-                        loading={activeIndex === 0 ? "eager" : "lazy"}
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                      />
+                  <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8 text-center tracking-tight">
+                    {category.title}
+                  </h3>
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="relative w-full max-w-2xl h-60 sm:h-72 lg:h-80 mb-4 sm:mb-6 group rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border-2 border-primary/10 bg-white overflow-hidden transition-all duration-300"
+                      onMouseEnter={() =>
+                        setPaused((prev) => ({ ...prev, [category.id]: true }))
+                      }
+                      onMouseLeave={() =>
+                        setPaused((prev) => ({ ...prev, [category.id]: false }))
+                      }
+                    >
+                      {/* Left arrow */}
+                      <button
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        onClick={() =>
+                          goLeft(category.id, category.conditions.length)
+                        }
+                        aria-label="Previous slide"
+                      >
+                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </button>
+                      {/* Right arrow */}
+                      <button
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        onClick={() =>
+                          goRight(category.id, category.conditions.length)
+                        }
+                        aria-label="Next slide"
+                      >
+                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                      </button>
+                      <motion.div
+                        key={activeCondition.name}
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -40 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer group"
+                        onClick={() => setSelectedCondition(activeCondition)}
+                      >
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={activeCondition.image}
+                            alt={activeCondition.name}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
+                            quality={85}
+                            priority={activeIndex === 0}
+                            className="object-cover rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl group-hover:scale-105 sm:group-hover:scale-110 group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-transform duration-500 border-2 border-primary/10"
+                            loading={activeIndex === 0 ? "eager" : "lazy"}
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                          />
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 rounded-b-2xl sm:rounded-b-3xl">
+                          <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow-lg">
+                            {activeCondition.name}
+                          </h4>
+                        </div>
+                      </motion.div>
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 rounded-b-2xl sm:rounded-b-3xl">
-                      <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow-lg">
-                        {activeCondition.name}
-                      </h4>
+                    {/* Slider dots */}
+                    <div className="flex gap-2 sm:gap-3 justify-center mb-3 sm:mb-4">
+                      {category.conditions.map((_, idx) => (
+                        <button
+                          key={idx}
+                          className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                            idx === activeIndex
+                              ? "bg-primary border-primary scale-110 sm:scale-125 shadow-xl"
+                              : "bg-white border-gray-300"
+                          }`}
+                          aria-label={`Go to slide ${idx + 1}`}
+                          onClick={() => goToSlide(category.id, idx)}
+                        />
+                      ))}
                     </div>
-                  </motion.div>
-                </div>
-                {/* Slider dots */}
-                <div className="flex gap-2 sm:gap-3 justify-center mb-3 sm:mb-4">
-                  {category.conditions.map((_, idx) => (
-                    <button
-                      key={idx}
-                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 ${
-                        idx === activeIndex
-                          ? "bg-primary border-primary scale-110 sm:scale-125 shadow-xl"
-                          : "bg-white border-gray-300"
-                      }`}
-                      aria-label={`Go to slide ${idx + 1}`}
-                      onClick={() => goToSlide(category.id, idx)}
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center max-w-xl mt-2 px-4">
-                  {activeCondition.description?.slice(0, 140)}
-                  {activeCondition.description &&
-                    activeCondition.description.length > 140 &&
-                    "..."}
-                </p>
-              </div>
-            </section>
-          );
-        })}
+                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center max-w-xl mt-2 px-4">
+                      {activeCondition.description?.slice(0, 140)}
+                      {activeCondition.description &&
+                        activeCondition.description.length > 140 &&
+                        "..."}
+                    </p>
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        ))}
 
         {/* Modal for condition details */}
         <AnimatePresence>

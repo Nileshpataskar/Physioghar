@@ -53,13 +53,13 @@ export const Vision = () => {
             We envision a future where every individual—regardless of age, location, or financial background—has access to affordable, physiotherapy services.
           </p>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto leading-relaxed mb-8">
+          {/* <p className="text-base sm:text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto leading-relaxed mb-8">
             We aim to deliver comprehensive care in orthopaedic, neurological, paediatric, post surgical, women health, geriatric, sports, ergonomic, and cardio-respiratory physiotherapy.
           </p>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto leading-relaxed mb-8">
             Our goal is to bring expert rehabilitation to every doorstep, empowering individuals to move better, live stronger, and heal faster.
-          </p>
+          </p> */}
 
           <div className="bg-gradient-to-r from-primary/5 to-primary/10 p-5 sm:p-7 rounded-xl shadow border border-primary/10 max-w-2xl mx-auto mt-2">
             <p className="text-base sm:text-lg md:text-xl text-primary  text-center font-medium leading-normal">
