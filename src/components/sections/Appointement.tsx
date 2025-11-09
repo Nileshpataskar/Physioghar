@@ -16,15 +16,15 @@ export const Appointement = () => {
         <section
             id="booking"
             ref={bookingRef}
-            className="py-20 px-6 md:px-10 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden"
+            className="py-20 px-2 sm:px-4 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden"
         >
             <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full -translate-x-1/3 -translate-y-1/3 blur-2xl opacity-15"></div>
             <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full translate-x-1/3 translate-y-1/3 blur-2xl opacity-15"></div>
-            <div className="max-w-6xl px-40 mx-auto shadow-xl p-5 rounded-md ">
+            <div className="max-w-3xl mx-auto shadow-xl p-2 sm:p-5 rounded-md ">
                 <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center tracking-tight">
                     Book Your Appointment
                 </h2>
-                <Card className="p-8 booking-form rounded-2xl shadow-lg border border-primary/5 bg-gradient-to-br from-white to-slate-50">
+                <Card className="p-4 sm:p-8 booking-form rounded-2xl shadow-lg border border-primary/5 bg-gradient-to-br from-white to-slate-50">
                     <div className="grid md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-sm font-medium mb-2 text-gray-700">
