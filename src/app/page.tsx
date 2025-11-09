@@ -22,11 +22,11 @@ const Page = () => {
       <Vision />
       <TreatmentCategories />
       <FirstVisit />
-      <OurCoreValues />
+      {/* <OurCoreValues /> */}
       <ServiceOptions />
       <Appointement />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
       <StickyPhone />
       {/* <Home /> */}
     </div>

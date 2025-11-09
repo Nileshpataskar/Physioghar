@@ -17,18 +17,18 @@ const ServiceOption = ({ title, image, description }: ServiceOptionProps) => {
             src={image}
             alt={title}
             fill
-            sizes="(max-width: 768px) 96px, (max-width: 1024px) 112px, 128px"
-            quality={80}
-            className="object-cover rounded-full border-4 border-primary/20 shadow-md bg-gray-50 group-hover:border-primary/60 transition-all duration-300"
+            sizes="(max-width: 768px) 112px, (max-width: 1024px) 128px, 144px"
+            quality={85}
+            className="object-cover rounded-full border-4 border-primary/30 shadow-lg bg-gray-50 group-hover:border-primary/60 transition-all duration-300"
             loading="lazy"
           />
         </div>
       </div>
-      <h3 className="text-lg sm:text-xl font-bold text-center text-gray-800 mb-2 group-hover:text-primary transition-colors duration-200">
+      <h3 className="text-xl sm:text-2xl font-bold text-center text-gray-900 mb-2 group-hover:text-primary transition-colors duration-200 drop-shadow-sm z-10">
         {title}
       </h3>
       {description && (
-        <p className="text-gray-600 text-center text-sm sm:text-base mt-1 mb-0">
+        <p className="text-gray-700 text-center text-base sm:text-lg mt-2 mb-0 z-10">
           {description}
         </p>
       )}
@@ -56,32 +56,34 @@ const ServiceOptions = () => {
   ];
 
   return (
-    <section className="py-16 px-2 bg-gradient-to-b from-white via-blue-50 to-white min-h-[60vh] flex flex-col items-center justify-start w-full">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-primary drop-shadow-sm">
-          Physiotherapy, your way
-        </h2>
-        <p className="text-lg sm:text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
-          Get physiotherapy how you prefer—at our clinic, at your home, or online. Choose the option that fits your lifestyle best.
-        </p>
-      </div>
-      <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.map((service, index) => (
-          <ServiceOption
-            key={index}
-            title={service.title}
-            image={service.image}
-            description={service.description}
-          />
-        ))}
+    <section className="relative py-16 px-2 bg-gradient-to-b from-white via-blue-50 to-white min-h-[60vh] flex flex-col items-center justify-start w-full overflow-hidden">
+      {/* Decorative blurred shapes */}
+
+      <div className="max-w-7xl mx-auto shadow-xl p-5 rounded-md px-12" >
+
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full opacity-20 translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none z-0"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full opacity-20 -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none z-0"></div>
+        <div className="text-center mb-12 relative z-10 ">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 text-primary drop-shadow-sm">
+            Physiotherapy, your way
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-600 mb-4 max-w-2xl mx-auto">
+            Get physiotherapy how you prefer—at our clinic, at your home, or online. Choose the option that fits your lifestyle best.
+          </p>
+        </div>
+        <div className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10 ">
+          {services.map((service, index) => (
+            <ServiceOption
+              key={index}
+              title={service.title}
+              image={service.image}
+              description={service.description}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
-
-// Add fade-in animation
-// Add this to your global CSS if not present:
-// @keyframes fadein { from { opacity: 0; transform: translateY(24px);} to { opacity: 1; transform: none; } }
-// .animate-fadein { animation: fadein 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
 export default ServiceOptions;

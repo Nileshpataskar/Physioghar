@@ -114,29 +114,24 @@ const TreatmentCategories = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50 py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-7xl mx-auto">
+    <section className="bg-gradient-to-b from-white to-gray-50 py-14 sm:py-16 lg:py-24 px-2 sm:px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto border border-gray-200 bg-white rounded-3xl shadow-xl p-4 sm:p-8 lg:p-12">
         <motion.div
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center mb-10 sm:mb-14 lg:mb-20"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary mb-2 sm:mb-3">
-            What We Treat
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-            Comprehensive physiotherapy for a wide range of conditions
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900">What We Treat</h2>
+          <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto px-4 font-normal">
+            Comprehensive physiotherapy for a wide range of conditions.
           </p>
         </motion.div>
 
-        {/* Render each category as a section with a slider */}
         {chunkArray(categories, 2).map((categoryPair, rowIdx) => (
           <div
             key={rowIdx}
-            className={`flex flex-col sm:flex-row gap-8 sm:gap-10 lg:gap-14 mb-12 sm:mb-16 lg:mb-20 ${
-              categoryPair.length === 1 ? 'justify-center' : ''
-            }`}
+            className={`flex flex-col sm:flex-row gap-8 sm:gap-12 mb-12 sm:mb-16 lg:mb-20 ${categoryPair.length === 1 ? 'justify-center' : ''}`}
           >
             {categoryPair.map((category) => {
               const activeIndex = activeSlides[category.id] || 0;
@@ -145,41 +140,33 @@ const TreatmentCategories = () => {
                 <section
                   key={category.id}
                   id={category.id}
-                  className="flex-1 py-8 sm:py-10 lg:py-12 px-3 sm:px-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white via-gray-50 to-gray-100"
+                  className="flex-1 bg-white border border-gray-200 shadow-md rounded-2xl sm:rounded-3xl px-4 py-8 sm:px-6 sm:py-10 lg:py-12 flex flex-col items-center"
                   style={{ minWidth: 0 }}
                 >
-                  <h3 className="text-2xl sm:text-3xl font-bold text-primary mb-6 sm:mb-8 text-center tracking-tight">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-7 text-center tracking-tight">
                     {category.title}
                   </h3>
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center w-full">
                     <div
-                      className="relative w-full max-w-2xl h-60 sm:h-72 lg:h-80 mb-4 sm:mb-6 group rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl border-2 border-primary/10 bg-white overflow-hidden transition-all duration-300"
-                      onMouseEnter={() =>
-                        setPaused((prev) => ({ ...prev, [category.id]: true }))
-                      }
-                      onMouseLeave={() =>
-                        setPaused((prev) => ({ ...prev, [category.id]: false }))
-                      }
+                      className="relative w-full max-w-2xl h-60 sm:h-72 lg:h-80 mb-5 group rounded-2xl sm:rounded-3xl shadow border border-gray-200 bg-gray-50 overflow-hidden transition-all duration-300"
+                      onMouseEnter={() => setPaused((prev) => ({ ...prev, [category.id]: true }))}
+                      onMouseLeave={() => setPaused((prev) => ({ ...prev, [category.id]: false }))}
                     >
                       {/* Left arrow */}
                       <button
-                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        onClick={() =>
-                          goLeft(category.id, category.conditions.length)
-                        }
+                        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-gray-900 hover:text-white text-gray-900 rounded-full p-2 border border-gray-300 shadow-md transition-all duration-200"
+                        onClick={() => goLeft(category.id, category.conditions.length)}
                         aria-label="Previous slide"
                       >
-                        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <ChevronLeft className="w-5 h-5" />
                       </button>
                       {/* Right arrow */}
                       <button
-                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-primary/90 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg sm:shadow-xl border border-primary/20 transition-all duration-200 scale-100 sm:scale-110 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        onClick={() =>
-                          goRight(category.id, category.conditions.length)
-                        }
+                        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-gray-900 hover:text-white text-gray-900 rounded-full p-2 border border-gray-300 shadow-md transition-all duration-200"
+                        onClick={() => goRight(category.id, category.conditions.length)}
                         aria-label="Next slide"
                       >
-                        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <ChevronRight className="w-5 h-5" />
                       </button>
                       <motion.div
                         key={activeCondition.name}
@@ -198,14 +185,14 @@ const TreatmentCategories = () => {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
                             quality={85}
                             priority={activeIndex === 0}
-                            className="object-cover rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl group-hover:scale-105 sm:group-hover:scale-110 group-hover:shadow-2xl sm:group-hover:shadow-3xl transition-transform duration-500 border-2 border-primary/10"
+                            className="object-cover rounded-2xl sm:rounded-3xl group-hover:scale-105 transition-transform duration-500 border border-gray-100"
                             loading={activeIndex === 0 ? "eager" : "lazy"}
                             placeholder="blur"
-                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUND..."
                           />
                         </div>
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-6 rounded-b-2xl sm:rounded-b-3xl">
-                          <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow-lg">
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900/70 to-transparent p-4 sm:p-6 rounded-b-2xl sm:rounded-b-3xl">
+                          <h4 className="text-white text-xl sm:text-2xl font-semibold drop-shadow">
                             {activeCondition.name}
                           </h4>
                         </div>
@@ -216,17 +203,17 @@ const TreatmentCategories = () => {
                       {category.conditions.map((_, idx) => (
                         <button
                           key={idx}
-                          className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-all duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-primary/20 ${
+                          className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full border shadow focus:outline-none transition-all duration-200 ${
                             idx === activeIndex
-                              ? "bg-primary border-primary scale-110 sm:scale-125 shadow-xl"
-                              : "bg-white border-gray-300"
+                              ? "bg-gray-900 border-gray-900 scale-110 shadow"
+                              : "bg-gray-100 border-gray-300"
                           }`}
                           aria-label={`Go to slide ${idx + 1}`}
                           onClick={() => goToSlide(category.id, idx)}
                         />
                       ))}
                     </div>
-                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center max-w-xl mt-2 px-4">
+                    <p className="text-gray-700 text-sm sm:text-base lg:text-lg text-center max-w-xl mt-2 px-4 font-normal">
                       {activeCondition.description?.slice(0, 140)}
                       {activeCondition.description &&
                         activeCondition.description.length > 140 &&
@@ -243,7 +230,7 @@ const TreatmentCategories = () => {
         <AnimatePresence>
           {selectedCondition && (
             <motion.div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+              className="fixed inset-0 bg-gray-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
               onClick={() => setSelectedCondition(null)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -251,14 +238,14 @@ const TreatmentCategories = () => {
             >
               <motion.div
                 ref={modalRef}
-                className="bg-white rounded-xl sm:rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-primary/20"
+                className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-gray-200 relative"
                 onClick={(e) => e.stopPropagation()}
-                initial={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+                exit={{ scale: 0.95, opacity: 0 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
               >
-                <div className="relative h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
+                <div className="relative h-48 sm:h-64 overflow-hidden rounded-t-2xl">
                   <div className="relative w-full h-full">
                     <Image
                       src={selectedCondition.image}
@@ -267,60 +254,49 @@ const TreatmentCategories = () => {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 60vw"
                       quality={90}
                       priority
-                      className="object-cover rounded-t-xl sm:rounded-t-2xl"
+                      className="object-cover rounded-t-2xl"
                       placeholder="blur"
-                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRoaHSQtJSEkMjU1LS0yMi4qLjgyPj4+MjU1OjU6Ojo6Ojo6Ojo6Ojo6Ojo6OjD/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHhD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUND..."
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end rounded-t-xl sm:rounded-t-2xl">
-                    <div className="p-4 sm:p-6">
-                      <h2 className="text-xl sm:text-2xl font-bold text-white drop-shadow">
-                        {selectedCondition.name}
-                      </h2>
-                    </div>
-                  </div>
                   <button
-                    className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white/30 hover:bg-primary/80 hover:text-white text-primary rounded-full p-1.5 sm:p-2 shadow-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
+                    className="absolute top-3 right-3 bg-white/80 hover:bg-gray-900 hover:text-white text-gray-900 rounded-full p-2 border border-gray-200 shadow focus:outline-none z-10"
                     onClick={() => setSelectedCondition(null)}
                     aria-label="Close modal"
                   >
-                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
+                <div className="p-6 sm:p-8">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
                     About this condition
                   </h3>
-                  <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">
-                    {selectedCondition.description ||
-                      "Detailed information about this condition will be available soon."}
+                  <p className="text-gray-700 text-base md:text-lg mb-4">
+                    {selectedCondition.description || "Detailed information about this condition will be available soon."}
                   </p>
-
-                  {selectedCondition.treatments &&
-                    selectedCondition.treatments.length > 0 && (
-                      <>
-                        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">
-                          Treatment approaches
-                        </h3>
-                        <ul className="space-y-2 sm:space-y-3">
-                          {selectedCondition.treatments.map((treatment, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start bg-gray-50 p-2 sm:p-3 rounded-lg"
-                            >
-                              <span className="text-primary mr-2 mt-0.5">•</span>
-                              <span className="text-sm sm:text-base text-gray-700">
-                                {treatment}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
+                  {selectedCondition.treatments && selectedCondition.treatments.length > 0 && (
+                    <>
+                      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4">
+                        Treatment approaches
+                      </h3>
+                      <ul className="space-y-2 sm:space-y-3">
+                        {selectedCondition.treatments.map((treatment, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start bg-gray-50 p-2 sm:p-3 rounded-lg text-gray-900"
+                          >
+                            <span className="text-gray-600 mr-2 mt-0.5">•</span>
+                            <span className="text-base">
+                              {treatment}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                   <div className="mt-6 sm:mt-8 flex justify-end">
                     <button
-                      className="px-4 sm:px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors duration-200 shadow-md hover:shadow-lg text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 shadow-md text-base focus:outline-none"
                       onClick={() => setSelectedCondition(null)}
                     >
                       Close
@@ -332,7 +308,7 @@ const TreatmentCategories = () => {
           )}
         </AnimatePresence>
       </div>
-    </div>
+    </section>
   );
 };
 

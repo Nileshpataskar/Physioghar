@@ -114,17 +114,13 @@ export const HeroBanner = () => {
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center text-white p-6 hero-content max-w-4xl animate-fade-in">
-          <div className="inline-block mb-4 px-4 py-1 rounded-full bg-primary/20 backdrop-blur-sm">
-            <span className="text-sm font-medium text-white">
-              Trusted by 1000+ patients
-            </span>
-          </div>
+          
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
             Expertise{" "}
-            <span className="text-primary/90 relative">
+            <span className="text-blue-950/90 relative">
               Physiotherapy
               <svg
-                className="absolute -bottom-2 left-0 w-full h-2 text-primary/60"
+                className="absolute -bottom-2 left-0 w-full h-2 text-blue-950/60"
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >

@@ -70,9 +70,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 pt-[env(safe-area-inset-top)] ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-2"
+          ? "bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200 py-2"
           : "backdrop-blur-xs py-5"
       }`}
     >
@@ -85,8 +85,8 @@ const Header = () => {
               alt="Physio Ghar Logo"
               width={140}
               height={45}
-              className={`transition-all duration-300 group-hover:scale-105 ${
-                isScrolled ? "w-28 sm:w-32" : "w-32 sm:w-36"
+              className={`transition-all duration-300 group-hover:scale-105 w-20 sm:w-28 md:w-32 ${
+                isScrolled ? "w-20 sm:w-28" : "w-24 sm:w-32 md:w-36"
               }`}
               priority
             />
@@ -177,9 +177,9 @@ const Header = () => {
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-gray-600" />
+              <X className="h-8 w-8 text-gray-600" />
             ) : (
-              <Menu className="h-6 w-6 text-gray-600" />
+              <Menu className="h-8 w-8 text-gray-600" />
             )}
           </button>
         </div>
