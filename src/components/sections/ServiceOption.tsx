@@ -59,7 +59,7 @@ const ServiceOptions = () => {
     <section className="relative py-16 px-2 bg-gradient-to-b from-white via-blue-50 to-white min-h-[60vh] flex flex-col items-center justify-start w-full overflow-hidden">
       {/* Decorative blurred shapes */}
 
-      <div className="max-w-7xl mx-auto shadow-xl p-5 rounded-md px-12" >
+      <div className="" >
 
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full opacity-20 translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none z-0"></div>
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full opacity-20 -translate-x-1/3 translate-y-1/3 blur-3xl pointer-events-none z-0"></div>

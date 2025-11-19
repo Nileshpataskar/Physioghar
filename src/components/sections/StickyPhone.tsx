@@ -3,7 +3,7 @@ import React from 'react'
 const StickyPhone = () => {
     return (
         <a
-            href="tel:+919876543210"
+            href="tel:+918329567219"
             className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all z-50 animate-pulse hover:animate-none group"
             aria-label="Call us"
         >

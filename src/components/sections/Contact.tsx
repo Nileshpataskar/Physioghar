@@ -51,7 +51,17 @@ export const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-10">
                     <div className="space-y-8">
                         <div className="contact-info">
-                            <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+                            <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+                            <div className="mb-6 pb-4 border-b border-slate-700/50 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-6">
+                                <div className="flex items-center gap-3">
+                                    <p className="text-white text-xl font-semibold">Dr. Prashant Shahi <span className="font-normal text-base text-slate-300">(PT)</span></p>
+                                </div>
+                                <span className="hidden sm:block w-1 h-6 bg-slate-600 rounded-full" />
+                                <div className="flex items-center gap-3">
+                                    <p className="text-white text-xl font-semibold">Dr. Yogesh Kalassua <span className="font-normal text-base text-slate-300">(PT)</span></p>
+                                </div>
+                                
+                            </div>
                             <div className="space-y-4">
                                 <div className="flex items-start">
                                     <MapPin className="h-5 w-5 mr-3 mt-0.5" />

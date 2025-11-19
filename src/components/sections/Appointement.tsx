@@ -18,8 +18,6 @@ export const Appointement = () => {
             ref={bookingRef}
             className="py-20 px-2 sm:px-4 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-white relative overflow-hidden"
         >
-            <div className="absolute top-0 left-0 w-96 h-96 bg-primary/10 rounded-full -translate-x-1/3 -translate-y-1/3 blur-2xl opacity-15"></div>
-            <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full translate-x-1/3 translate-y-1/3 blur-2xl opacity-15"></div>
             <div className="max-w-3xl mx-auto shadow-xl p-2 sm:p-5 rounded-md ">
                 <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center tracking-tight">
                     Book Your Appointment
