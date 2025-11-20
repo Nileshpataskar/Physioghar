@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface ProcessStep {
   title: string;
@@ -11,7 +12,7 @@ const processSteps: ProcessStep[] = [
   {
     title: "Consultation",
     description: (
-      <span className="block text-sm sm:text-base text-blue-100/90 font-normal mt-2 leading-relaxed">
+      <span className="block text-sm text-emerald-700/90 font-medium mt-2 leading-relaxed">
         • Detailed Case History
         <br />• Physical Examination
         <br />• Explanation & Assessment
@@ -22,7 +23,7 @@ const processSteps: ProcessStep[] = [
   {
     title: "Treatment begins",
     description: (
-      <span className="block text-sm sm:text-base text-blue-100/90 font-normal mt-2 leading-relaxed">
+      <span className="block text-sm text-emerald-700/90 font-medium mt-2 leading-relaxed">
         • Hands-on Manual Therapy
         <br />• Targeted Exercises
         <br />• Pain Management Techniques
@@ -33,7 +34,7 @@ const processSteps: ProcessStep[] = [
   {
     title: "Personalised recovery plan ",
     description: (
-      <span className="block text-sm sm:text-base text-blue-100/90 font-normal mt-2 leading-relaxed">
+      <span className="block text-sm text-emerald-700/90 font-medium mt-2 leading-relaxed">
         • Custom Exercise Program
         <br />• Home Care Instructions
         <br />• Recovery Timeline
@@ -44,7 +45,7 @@ const processSteps: ProcessStep[] = [
   {
     title: "Progress Monitoring",
     description: (
-      <span className="block text-sm sm:text-base text-blue-100/90 font-normal mt-2 leading-relaxed">
+      <span className="block text-sm text-emerald-700/90 font-medium mt-2 leading-relaxed">
         • Regular Assessments
         <br />• Adjustments to Treatment
         <br />• Goal Tracking
@@ -55,7 +56,7 @@ const processSteps: ProcessStep[] = [
   {
     title: "Post treatment care",
     description: (
-      <span className="block text-sm sm:text-base text-blue-100/90 font-normal mt-2 leading-relaxed">
+      <span className="block text-sm text-emerald-700/90 font-medium mt-2 leading-relaxed">
         • Maintenance Exercises
         <br />• Prevention Strategies
         <br />• Follow-up Support
@@ -67,91 +68,71 @@ const processSteps: ProcessStep[] = [
 
 const FirstVisit: React.FC = () => {
   return (
-    <section className="w-full min-h-screen bg-gradient-to-b from-white via-blue-50 to-white flex flex-col items-center justify-center py-14 lg:pt-24 px-2 sm:px-4">
-      <div className="max-w-5xl mx-auto w-full border border-blue-900/40 bg-blue-950/95 rounded-3xl shadow-2xl p-6 sm:p-10 lg:p-14 mb-10">
-        <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-50 mb-4 uppercase tracking-wide drop-shadow-lg">Our Process for your</h2>
-          <span className="inline-block bg-blue-50/25 text-blue-50 rounded-full px-6 py-2.5 text-base sm:text-lg font-semibold tracking-wider shadow-lg backdrop-blur-sm mb-6">First Physiotherapy Visit</span>
-          <p className="text-blue-100/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Experience our comprehensive approach to physiotherapy, designed to guide you through every step of your recovery journey.
+    <section className="w-full min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-emerald-50/50 py-20 lg:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-20">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-950 mb-6 tracking-tight">
+            Our Process for Your <span className="text-emerald-600">First Visit</span>
+          </h2>
+          <p className="text-emerald-800/80 text-lg max-w-2xl mx-auto leading-relaxed font-medium">
+            Experience our comprehensive approach to physiotherapy, designed to guide you through every step of your recovery journey with care and expertise.
           </p>
         </div>
-        <div className="relative w-full flex flex-col items-center">
-          {/* Timeline vertical line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-300/60 via-blue-400/50 to-blue-300/60 -translate-x-1/2 z-0" />
-          <div className="flex flex-col w-full">
+
+        <div className="relative">
+          {/* Center Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-emerald-200 -translate-x-1/2 hidden md:block" />
+
+          <div className="space-y-12 md:space-y-24">
             {processSteps.map((step, idx) => {
-              const isLeft = idx % 2 === 0;
+              const isEven = idx % 2 === 0;
               return (
                 <div
                   key={idx}
-                  className="relative grid grid-cols-3 w-full min-h-[240px] gap-4 mb-6"
+                  className={cn(
+                    "relative flex flex-col md:flex-row items-center gap-8 md:gap-16",
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  )}
                 >
-                  {/* Left content */}
-                  <div className="flex items-center justify-end pr-4">
-                  {isLeft && (
-                    <div className="text-right max-w-sm flex flex-col items-end space-y-3">
-                      <span className="text-xs font-bold text-blue-950 bg-blue-50 rounded-full px-4 py-1.5 shadow-md">Step {idx + 1}</span>
-                      <div className="text-lg md:text-xl lg:text-2xl font-bold text-blue-50 drop-shadow-md mb-1">
+                  {/* Image Side */}
+                  <div className="w-full md:w-1/2 flex justify-center md:justify-end group">
+                    <div className={cn(
+                      "relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl shadow-emerald-900/10 transition-transform duration-500 group-hover:scale-[1.02]",
+                      !isEven && "md:order-last" // This logic is handled by flex-row-reverse, but keeping structure clear
+                    )}>
+                      <div className="absolute inset-0 bg-emerald-900/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                      <Image
+                        src={step.image}
+                        alt={step.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Timeline Dot (Desktop) */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-white border-4 border-emerald-100 shadow-lg flex items-center justify-center">
+                      <div className="w-4 h-4 rounded-full bg-emerald-500" />
+                    </div>
+                  </div>
+
+                  {/* Content Side */}
+                  <div className="w-full md:w-1/2 text-center md:text-left">
+                    <div className={cn(
+                      "flex flex-col space-y-4",
+                      isEven ? "md:items-start md:text-left" : "md:items-end md:text-right"
+                    )}>
+                      <div className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100/50 text-emerald-700 text-sm font-bold uppercase tracking-wider">
+                        Step {idx + 1}
+                      </div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-emerald-900">
                         {step.title}
-                      </div>
-                      <div className="my-3 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-                        <Image
-                          src={step.image}
-                          alt={step.title}
-                          width={240}
-                          height={140}
-                          className="object-cover w-[240px] h-[140px] rounded-xl shadow-xl border-2 border-blue-200/50 bg-blue-50"
-                        />
-                      </div>
-                      <div className="bg-blue-900/30 backdrop-blur-sm rounded-lg p-3 border border-blue-800/30">
+                      </h3>
+                      <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-emerald-100 shadow-sm hover:shadow-md transition-shadow duration-300">
                         {step.description}
                       </div>
                     </div>
-                  )}
-                </div>
-                  {/* Timeline center column */}
-                  <div className="relative flex flex-col items-center justify-center py-4">
-                    {/* Timeline dot */}
-                    <div className="relative z-10">
-                      <div className="w-6 h-6 rounded-full bg-blue-50 border-[3px] border-blue-300 shadow-lg ring-4 ring-blue-950/50" />
-                    </div>
-                    {/* Connector line (except last) */}
-                    {idx !== processSteps.length - 1 && (
-                      <div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 z-0"
-                        style={{
-                          height: "calc(100% + 1rem)",
-                          width: "2px",
-                          background: "linear-gradient(to bottom, #60a5fa 0%, #3b82f6 50%, #2563eb 100%)",
-                          minHeight: "80px",
-                          top: "50%",
-                        }}
-                      />
-                    )}
-                  </div>
-                  {/* Right content */}
-                  <div className="flex items-center justify-start pl-4">
-                    {!isLeft && (
-                      <div className="text-left max-w-sm flex flex-col items-start space-y-3">
-                        <span className="text-xs font-bold text-blue-950 bg-blue-50 rounded-full px-4 py-1.5 shadow-md">Step {idx + 1}</span>
-                        <div className="text-lg md:text-xl lg:text-2xl font-bold text-blue-50 drop-shadow-md mb-1">
-                          {step.title}
-                        </div>
-                        <div className="my-3 transform hover:scale-105 transition-transform duration-300 cursor-pointer">
-                          <Image
-                            src={step.image}
-                            alt={step.title}
-                            width={240}
-                            height={140}
-                            className="object-cover w-[240px] h-[140px] rounded-xl shadow-xl border-2 border-blue-200/50 bg-blue-50"
-                          />
-                        </div>
-                        <div className="bg-blue-900/30 backdrop-blur-sm rounded-lg p-3 border border-blue-800/30">
-                          {step.description}
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
               );
@@ -164,3 +145,4 @@ const FirstVisit: React.FC = () => {
 };
 
 export default FirstVisit;
+
